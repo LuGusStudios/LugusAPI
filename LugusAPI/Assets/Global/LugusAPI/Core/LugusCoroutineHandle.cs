@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LugusCoroutines : MonoBehaviour {
+public class LugusCoroutineHandle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
