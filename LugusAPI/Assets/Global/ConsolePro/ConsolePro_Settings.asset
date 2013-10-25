@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 119115124, guid: 055660d49bf99418387e1eb7eb8ecbd9, type: 3}
+  m_Name: ConsolePro_Settings
+  m_EditorClassIdentifier: 
+  filterGroups: []
+  entries: []
+  rects: []
+  showLogs: 1
+  showWarnings: 1
+  showErrors: 1
+  showIcons: 1
+  showColors: 0
+  showFiles: 1
+  showMethods: 1
+  showStack: 1
+  showSource: 1
+  showTime: 1
+  autoScroll: 1
+  clearOnPlay: 1
+  collapseEntries: 0
+  errorPause: 0
+  ignoreWarnings: 0
+  maxLogEntries: 200
+  wasModified: 0
+  wasCleared: 0
