@@ -13,7 +13,8 @@ public class CoroutineTester : MonoBehaviour
 		handle = LugusCoroutines.use.GetHandle();
 		handle.Start( PrintRoutine("ONE") );
 		
-		handle.Start( PrintRoutine("TWO") );
+		// Test to see if we can start 2 coroutines on a single handle
+		//handle.Start( PrintRoutine("TWO") );
 	}
 	
 	// Update is called once per frame
