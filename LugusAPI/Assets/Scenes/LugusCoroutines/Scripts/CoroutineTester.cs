@@ -11,24 +11,22 @@ public class CoroutineTester : MonoBehaviour
 	void Start () 
 	{
 		handle = LugusCoroutines.use.GetHandle();
-		handle.StartRoutine( PrintRoutine() );
+		handle.Start( PrintRoutine("ONE") );
+		
+		handle.Start( PrintRoutine("TWO") );
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if( LugusInput.use.KeyDown(KeyCode.T) )
-		{
-			handle.Toggle();
-		}
 	}
 		
-	public IEnumerator PrintRoutine()
+	public IEnumerator PrintRoutine(string prefix)
 	{
 		int counter = 0;
 		while( true )
 		{
-			Debug.Log (name + " : routine iteration " + counter);
+			Debug.Log (name + " : " + prefix + " routine iteration " + counter);
 			
 			counter++;
 			
