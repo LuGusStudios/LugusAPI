@@ -31,13 +31,13 @@ public class LugusCoroutines
 [Serializable]
 public class LugusCoroutinesDefault
 {
-	public List<LugusCoroutineHandle> handles = new List<LugusCoroutineHandle>();
+	public List<ILugusCoroutineHandle> handles = new List<ILugusCoroutineHandle>();
 	
 	protected Transform handleHelperParent = null;
 	
 	public LugusCoroutinesDefault()
 	{
-		// TODO: find all LugusCoroutineHandleHelpers in the scene and add their handles to this.handles
+		// TODO: find all LugusCoroutineHandles in the scene and add their handles to this.handles
 		// TODO : create a number of handles at the beginning to act as a Pool
 	}
 	
@@ -55,25 +55,19 @@ public class LugusCoroutinesDefault
 		}
 	}
 	
-	protected LugusCoroutineHandle CreateHandle()
+	protected ILugusCoroutineHandle CreateHandle()
 	{
 		FindReferences();
 		
+		GameObject handleGO = new GameObject("LugusCoroutineHandle");
+		ILugusCoroutineHandle handle = handleGO.AddComponent<LugusCoroutineHandleDefault>();
 		
-		LugusCoroutineHandle newHandle = new LugusCoroutineHandle();
-		
-		GameObject handleHelperObject = new GameObject("LugusCoroutineHandle");
-		handleHelperObject.transform.parent = handleHelperParent;
-		
-		newHandle.Helper = handleHelperObject.AddComponent<LugusCoroutineHandleHelper>();
-		
-		
-		handles.Add( newHandle ); 
-		
-		return newHandle;
+		handleGO.transform.parent = handleHelperParent;
+
+		return handle;
 	}
 	
-	public LugusCoroutineHandle GetHandle() 
+	public ILugusCoroutineHandle GetHandle() 
 	{
 		// TODO: make sure the handles are recycled / that we use a Pool of handles that is initialized at the beginning
 		// loop over this.handles to find the next handle that has .Running == false
@@ -82,19 +76,19 @@ public class LugusCoroutinesDefault
 		return CreateHandle(); 
 	}
 	
-	public LugusCoroutineHandle StartRoutine( IEnumerator routine )
+	public ILugusCoroutineHandle StartRoutine( IEnumerator routine )
 	{
-		LugusCoroutineHandle handle = GetHandle();
-		handle.Start( routine );
+		ILugusCoroutineHandle handle = GetHandle();
+		handle.StartRoutine( routine );
 		
 		return handle;
 	}
 	
 	public void StopAllRoutines()
 	{
-		foreach( LugusCoroutineHandle handle in handles )
+		foreach( ILugusCoroutineHandle handle in handles )
 		{
-			handle.Stop ();
+			handle.StopRoutine ();
 		}
 	}
 }
