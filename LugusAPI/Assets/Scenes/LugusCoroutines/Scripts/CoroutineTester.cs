@@ -36,7 +36,7 @@ public class CoroutineTester : MonoBehaviour
 	public IEnumerator PrintRoutine(string prefix)
 	{
 		int counter = 0;
-		while( true )
+		while( counter < 10 )
 		{
 			Debug.Log (name + " : " + prefix + " routine iteration " + counter);
 			
