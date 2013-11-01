@@ -53,6 +53,7 @@ public class LugusResourcesDefault : MonoBehaviour, ILugusResources
 	public List<ILugusResourceProvider> providers = null;
 	
 	protected LugusResourceProviderDisk diskProvider = null;
+	protected LugusResourceHelperText textHelper = null;
 	
 	protected string sharedBaseURL = "Shared/";
 	protected string languagesBaseURL = "Languages/";
@@ -65,23 +66,37 @@ public class LugusResourcesDefault : MonoBehaviour, ILugusResources
 	}
 	
 	protected void FindReferences()
-	{
-		this.diskProvider = gameObject.AddComponent<LugusResourceProviderDisk>(); 
+	{ 
+		if( this.diskProvider == null )
+		{
+			this.diskProvider = gameObject.AddComponent<LugusResourceProviderDisk>(); 
+		}
 		
-		providers = new List<ILugusResourceProvider>();
-		providers.Add( diskProvider );
+		if( this.textHelper == null )
+		{
+			this.textHelper = new LugusResourceHelperText();
+		}
 		
-		SetBaseLanguage( languagesBaseLanguage );
+		if( this.providers == null || this.providers.Count == 0 )
+		{
+			providers = new List<ILugusResourceProvider>();
+			providers.Add( diskProvider );
+		}
 	}
 	
 	public void SetBaseLanguage(string langID)
 	{
+		FindReferences();
+		
 		languagesBaseLanguage = langID;
 		
 		foreach( ILugusResourceProvider provider in providers )
 		{
 			provider.BaseURL = languagesBaseURL + languagesBaseLanguage + "/";
 		}
+		
+		// TODO: now we're loading all text files from disk. If this is no longer the case, we should update this part
+		textHelper.Parse( diskProvider.GetText("texts") );
 		
 		if( onResourcesReloaded != null )
 		{
@@ -94,6 +109,7 @@ public class LugusResourcesDefault : MonoBehaviour, ILugusResources
 	public void Awake()
 	{
 		FindReferences();
+		SetBaseLanguage( languagesBaseLanguage );
 	}
 	
 	public Texture2D GetTexture(string key)
@@ -139,7 +155,7 @@ public class LugusResourcesDefault : MonoBehaviour, ILugusResources
 	
 	public string GetText(string key)
 	{
-		return null;
+		return textHelper.Get ( key );
 	}
 
 }
