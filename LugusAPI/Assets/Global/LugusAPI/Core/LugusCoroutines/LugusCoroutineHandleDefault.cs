@@ -14,18 +14,23 @@ public interface ILugusCoroutineHandle
 	void StopRoutineDelayed(float delay);
 	
 	void Claim();
+	void Claim(string name);
 	void Release();
 }
 
 [Serializable]
 public class LugusCoroutineHandleDefault : MonoBehaviour, ILugusCoroutineHandle
 {
-	
 	[SerializeField] // NOTE: this is just to make it show up in the inspector. Can be removed without problem.
-	protected bool _running = false;
+	protected int _routineCount = 0; 
+	public int RoutineCount
+	{
+		get{ return _routineCount; }
+	}
+	
 	public bool Running
 	{
-		get{ return _running; }
+		get{ return (_routineCount != 0); }
 		set{}
 	}
 	
@@ -52,7 +57,7 @@ public class LugusCoroutineHandleDefault : MonoBehaviour, ILugusCoroutineHandle
 		// Note though: this might be expected behaviour... ex. launching multiple routines that belong together on 1 handle...
 		// possibly handle that with a flag? or even separate Singleton interface? (ex. GetHandle vs GetGroupHandle)
 		
-		if( _running && !_claimed )
+		if( this.Running && !_claimed )
 		{
 			Debug.LogWarning("LugusCoroutineHandle : there was already a routine running on this un-claimed Handle! Starting new one anyway...");
 		}
@@ -76,7 +81,7 @@ public class LugusCoroutineHandleDefault : MonoBehaviour, ILugusCoroutineHandle
 	{
 		StopAllCoroutines();
 		
-		_running = false;
+		_routineCount = 0;
 	}
 	
 	public void StopRoutineDelayed(float delay)
@@ -95,17 +100,23 @@ public class LugusCoroutineHandleDefault : MonoBehaviour, ILugusCoroutineHandle
 	
 	public IEnumerator RoutineRunner( IEnumerator routine )
 	{	
-		_running = true;
+		
+		_routineCount++;
 		
 		yield return StartCoroutine( routine );
 		
-		_running = false;
+		_routineCount--;
+		
+		if( _routineCount < 0 )
+		{
+			Debug.LogError(name + " : routineCount was < 0! " + _routineCount);
+		}
 	}
 	
 	
 	void Awake()
 	{
-		_running = false;
+		_routineCount = 0;
 		_claimed = false;
 	}
 	
@@ -115,6 +126,12 @@ public class LugusCoroutineHandleDefault : MonoBehaviour, ILugusCoroutineHandle
 	public void Claim()
 	{
 		_claimed = true;
+	}
+	
+	public void Claim(string name)
+	{
+		Claim ();
+		this.transform.name = name;
 	}
 	
 	public void Release()
