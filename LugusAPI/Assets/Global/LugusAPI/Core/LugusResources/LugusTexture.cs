@@ -4,16 +4,22 @@ using System.Collections;
 public class LugusTexture : MonoBehaviour 
 {
 	public string key = "";
-
-	// Use this for initialization
-	void Start () 
+	
+	
+	protected void AssignKey()
 	{
 		if( string.IsNullOrEmpty(key) )
 		{
 			key = renderer.material.mainTexture.name;
 			
-			Debug.LogError(name + " : key was empty! using material.mainTexture name : " + key );
+			Debug.LogWarning(name + " : key was empty! using material.mainTexture name : " + key );
 		}
+	}
+	
+	// Use this for initialization
+	void Start () 
+	{
+		AssignKey();
 		
 		LugusResources.use.onResourcesReloaded += UpdateTexture;
 		

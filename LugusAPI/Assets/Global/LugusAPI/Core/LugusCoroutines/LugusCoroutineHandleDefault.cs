@@ -14,7 +14,6 @@ public interface ILugusCoroutineHandle
 	void StopRoutineDelayed(float delay);
 	
 	void Claim();
-	void Claim(string name);
 	void Release();
 }
 
@@ -119,9 +118,6 @@ public class LugusCoroutineHandleDefault : MonoBehaviour, ILugusCoroutineHandle
 		_routineCount = 0;
 		_claimed = false;
 	}
-	
-	
-	
 	
 	public void Claim()
 	{
