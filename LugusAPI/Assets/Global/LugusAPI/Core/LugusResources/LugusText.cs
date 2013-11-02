@@ -19,17 +19,21 @@ public class LugusText : MonoBehaviour
 		}
 	}
 	
-	// Use this for initialization
-	void Start () 
+	protected void AssignKey()
 	{
-		FindReferences();
-		
 		if( string.IsNullOrEmpty(key) )
 		{
 			key = textMesh.text;
 			
-			Debug.LogError(name + " : key was empty! using TextMesh.text as key : " + key );
+			Debug.LogWarning(name + " : key was empty! using TextMesh.text as key : " + key );
 		}
+	}
+	
+	// Use this for initialization
+	void Start () 
+	{
+		FindReferences();
+		AssignKey();
 		
 		LugusResources.use.onResourcesReloaded += UpdateText;
 		

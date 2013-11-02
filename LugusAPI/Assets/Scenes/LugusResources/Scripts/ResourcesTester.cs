@@ -26,10 +26,10 @@ public class ResourcesTester : MonoBehaviour {
 				LugusResources.use.LanguageID = "en";
 			}
 		}
-		
-		if( LugusInput.use.KeyDown( KeyCode.A) )
+		else if( t == GameObject.Find ("AudioButton").transform )
 		{
-			LugusAudio.use.PlayOneShot( LugusResources.use.GetAudio("test.audio.default") );
+			LugusAudioSource src = GameObject.Find ("AudioButton").GetComponent<LugusAudioSource>();
+			src.Play();
 		}
 	}
 }
