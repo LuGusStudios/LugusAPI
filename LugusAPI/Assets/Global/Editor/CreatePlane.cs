@@ -120,7 +120,7 @@ public class CreatePlane : ScriptableWizard
         plane.AddComponent(typeof(MeshRenderer));
 
         string planeAssetName = plane.name + widthSegments + "x" + lengthSegments + "W" + width + "L" + length + (orientation == Orientation.Horizontal ? "H" : "V") + anchorId + ".asset";
-        Mesh m = (Mesh)AssetDatabase.LoadAssetAtPath("Assets/Editor/" + planeAssetName, typeof(Mesh));
+        Mesh m = (Mesh)AssetDatabase.LoadAssetAtPath(/*"Assets/Editor/"*/ "Assets/Project/PlaneMeshes/" + planeAssetName, typeof(Mesh));
 
         if (m == null)
         {
@@ -128,7 +128,7 @@ public class CreatePlane : ScriptableWizard
             m.name = plane.name;
 
             int hCount2 = widthSegments + 1;
-            int vCount2 = lengthSegments + 1;
+            int vCount2 = lengthSegments + 1; 
             int numTriangles = widthSegments * lengthSegments * 6;
             int numVertices = hCount2 * vCount2;
 
@@ -178,7 +178,7 @@ public class CreatePlane : ScriptableWizard
             m.triangles = triangles;
             m.RecalculateNormals();
 
-            AssetDatabase.CreateAsset(m, "Assets/Editor/" + planeAssetName);
+            AssetDatabase.CreateAsset(m, /*"Assets/Editor/"*/ "Assets/Project/PlaneMeshes/" + planeAssetName);
             AssetDatabase.SaveAssets();
         }
 
