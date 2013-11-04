@@ -11,6 +11,19 @@ public interface ILugusAudio
 	// track.destroyAfterPlay
 	
 	// 
+	
+	LugusAudioChannel GetChannel(Lugus.AudioChannelType type);
+	
+	// float GlobalVolume{ get; set; } // change AudioListener.volume, also store in LugusConfig for good measure
+	
+	LugusAudioChannel Music();
+	LugusAudioChannel Ambient();
+	LugusAudioChannel SFX();
+	LugusAudioChannel Speech();
+	
+	LugusAudioChannel Custom1();
+	LugusAudioChannel Custom2();
+	LugusAudioChannel Custom3();
 }
 
 
@@ -52,6 +65,16 @@ public class LugusAudioDefault : MonoBehaviour, ILugusAudio
 		
 		return channel;
 	}
+	
+	// TODO: performance-wise: replace GetChannel() calls by local vars that are assigned the first time this function is called
+	public LugusAudioChannel Music(){ return GetChannel(Lugus.AudioChannelType.BackgroundMusic); }
+	public LugusAudioChannel Ambient(){ return GetChannel(Lugus.AudioChannelType.BackgroundAmbient); }
+	public LugusAudioChannel SFX(){ return GetChannel(Lugus.AudioChannelType.ForegroundSFX); }
+	public LugusAudioChannel Speech(){ return GetChannel(Lugus.AudioChannelType.ForegroundSpeech); }
+	
+	public LugusAudioChannel Custom1(){ return GetChannel(Lugus.AudioChannelType.Custom1); }
+	public LugusAudioChannel Custom2(){ return GetChannel(Lugus.AudioChannelType.Custom2); }
+	public LugusAudioChannel Custom3(){ return GetChannel(Lugus.AudioChannelType.Custom3); }
 	
 	/*
 	public AudioSource oneShotSource = null;

@@ -4,18 +4,32 @@ using System.Collections.Generic;
 
 public class LugusAudioChannel 
 {
-	protected float _volume = 100.0f;
+	
+	protected float _volume = 1.0f;
 	public float VolumePercentage
 	{
 		get{ return _volume; }
 		set{ UpdateVolume(value); }
 	}
 	
-	protected bool _playing = false;
+	// if any of the tracks on this channel is playing
 	public bool IsPlaying
 	{
-		get{ return _playing; }
-		set{ _playing = value; }
+		get
+		{
+			bool playing = false;
+			
+			foreach( ILugusAudioTrack t in _tracks )
+			{
+				if( t.Playing )
+				{
+					playing = true;
+					break;
+				}
+			}
+			
+			return playing; 
+		}
 	}
 	
 	protected Lugus.AudioChannelType _channelType = Lugus.AudioChannelType.NONE;
@@ -25,12 +39,16 @@ public class LugusAudioChannel
 		set{ _channelType = value; }
 	}
 	
+	// TODO: FIXME: this doesn't work properly
+	// if we've already adjusted the percentage and applied to running tracks
+	// if we then do it again, tracks are adjusted again by percentage...
+	// possible fix: tracks should keep original volume at start and re-use that in subsequent calculations
 	protected void UpdateVolume(float newValue)
 	{
 		float changeFactor = newValue / _volume;
 		_volume = newValue;
 		
-		foreach( LugusAudioTrack track in _tracks )
+		foreach( ILugusAudioTrack track in _tracks )
 		{
 			track.Source.volume *= changeFactor; 
 		}
@@ -44,8 +62,16 @@ public class LugusAudioChannel
 	}
 	
 	
-	protected List<LugusAudioTrack> _tracks = new List<LugusAudioTrack>();
-	public List<LugusAudioTrack> Tracks
+	protected LugusAudioTrackSettings _baseTrackSettings = null;
+	public LugusAudioTrackSettings BaseTrackSettings
+	{
+		get{ return _baseTrackSettings; }
+		set{ _baseTrackSettings = value; }
+	}
+	
+	
+	protected List<ILugusAudioTrack> _tracks = new List<ILugusAudioTrack>();
+	public List<ILugusAudioTrack> Tracks
 	{
 		get{ return _tracks; }
 	}
@@ -56,10 +82,11 @@ public class LugusAudioChannel
 	{
 		if( trackParent == null )
 		{
-			GameObject p = GameObject.Find("_LugusAudioTracks");
+			GameObject p = GameObject.Find("_ILugusAudioTracks");
 			if( p == null )
 			{
-				p = new GameObject("_LugusAudioTracks");
+				p = new GameObject("_ILugusAudioTracks");
+				p.transform.parent = LugusCamera.game.transform;
 			}
 			
 			trackParent = p.transform;
@@ -67,14 +94,14 @@ public class LugusAudioChannel
 	}
 	
 	
-	protected LugusAudioTrack CreateTrack()
+	protected ILugusAudioTrack CreateTrack()
 	{
 		FindReferences();
 		
 		GameObject trackGO = new GameObject(this._channelType.ToString() + "_Track_" + (_tracks.Count + 1));
 		
 		trackGO.AddComponent<AudioSource>();
-		LugusAudioTrack track = trackGO.AddComponent<LugusAudioTrack>();
+		ILugusAudioTrack track = trackGO.AddComponent<LugusAudioTrack>();
 		track.Channel = this;
 		
 		trackGO.transform.parent = trackParent;
@@ -84,20 +111,21 @@ public class LugusAudioChannel
 		return track;
 	}
 	
-	public LugusAudioTrack GetTrack() 
+	// get next available track in the pool (not playing, not claimed, not paused)
+	public ILugusAudioTrack GetTrack() 
 	{
 		// TODO: make sure the tracks are recycled / that we use a Pool of handles that is initialized at the beginning
 		// loop over this.tracks to find the next handle that has .IsPlaying == false and Claimed == false
 		// if none can be found -> only then use CreateTrack()
 		
-		LugusAudioTrack output = null;
+		ILugusAudioTrack output = null;
 		
-		foreach( LugusAudioTrack t in _tracks )
+		foreach( ILugusAudioTrack t in _tracks )
 		{
 			// only if the track is not claimed by someone,
 			// and it's not currently playing
 			// and it hasn't been paused (which means it's still playing but unity's AudioSource.IsPlaying is false...)
-			if( !t.Claimed && !t.IsPlaying && !t.Paused )
+			if( !t.Claimed && !t.Playing && !t.Paused )
 			{
 				output = t;
 				break;
@@ -112,39 +140,63 @@ public class LugusAudioChannel
 		return output; 
 	}
 	
+	// returns the first found track that is currently playing
+	// usefull in situations where we have 1 main track (ex. backgroundmusic) and want to fade to a new track
+	public ILugusAudioTrack GetActiveTrack()
+	{	
+		foreach( ILugusAudioTrack t in _tracks )
+		{
+			if( t.Playing )
+			{
+				return t;
+			}
+		}
+		
+		return null;
+	}
 	
-	public LugusAudioTrack Play(AudioClip clip, bool stopOthers = false, LugusAudioTrackSettings trackSettings = null )
+	public ILugusAudioTrack Play(AudioClip clip, bool stopOthers = false, LugusAudioTrackSettings trackSettings = null )
 	{
 		// TODO: maybe upgrade this option to allow PauseOthers or MuteOthers as well? 
 		if( stopOthers )
 		{
-			foreach( LugusAudioTrack t in _tracks )
-			{
-				t.Stop();
-			}
+			StopAll ();
 		}
 		
-		LugusAudioTrack track = GetTrack();
-		
-		if( trackSettings != null && trackSettings.position != LugusUtil.DEFAULTVECTOR )
-		{
-			track.transform.position = trackSettings.position;
-		}
-		else
-		{
-			track.transform.position = LugusAudio.use.transform.position;
-		}
+		ILugusAudioTrack track = GetTrack();
 		
 		track.Play( clip, trackSettings );
 		
 		return track;
 	}
 	
-	public LugusAudioTrack Play(AudioClip clip, bool stopOthers, Vector3 position )
+	public ILugusAudioTrack Play(AudioClip clip, bool stopOthers, Vector3 position )
 	{
-		LugusAudioTrackSettings settings = new LugusAudioTrackSettings();
-		settings.position = position;
+		return Play (clip, stopOthers, new LugusAudioTrackSettings().Position(position) );
+	}
+	
+	// fades out and stops all active tracks and fades in a new track with the new clip
+	public ILugusAudioTrack CrossFade(AudioClip clip, float duration, LugusAudioTrackSettings settings = null )
+	{
+		foreach( ILugusAudioTrack t in _tracks )
+		{
+			if( t.Playing && !t.Paused )
+			{
+				t.FadeOut(duration, true);
+			}
+		}
 		
-		return Play (clip, stopOthers, settings);
+		ILugusAudioTrack newTrack = GetTrack();
+		newTrack.FadeIn( clip, duration, settings );
+		
+		return newTrack;
+	}
+	
+	public void StopAll()
+	{
+		foreach( ILugusAudioTrack t in _tracks )
+		{
+			t.Stop();
+		}
 	}
 }

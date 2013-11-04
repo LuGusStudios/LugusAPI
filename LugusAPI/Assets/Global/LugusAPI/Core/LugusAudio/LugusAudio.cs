@@ -12,15 +12,15 @@ namespace Lugus
 	{
 		NONE = 0, // 0
 		
-		Ambient = 1, // 1 // ambient background sounds, usually looping
-		Music = 2, // 2 // background music, usually looping
+		BackgroundAmbient = 1, // 1 // ambient background sounds, usually looping
+		BackgroundMusic = 2, // 2 // background music, usually looping
 		
-		Background = 3, // 3 // convenience value, same as Ambient | Music
+		BackgroundAll = 3, // 3 // convenience value, same as Ambient | Music
 		
-		SFX = 4, // 4 // one-shot sound effects
-		Speech = 8, // 8 // one-shot voice-overs or character speech
+		ForegroundSFX = 4, // 4 // one-shot sound effects
+		ForegroundSpeech = 8, // 8 // one-shot voice-overs or character speech
 		
-		Foreground = 12, // 12 // convenience value, same as SFX | Speech
+		ForegroundAll = 12, // 12 // convenience value, same as SFX | Speech
 		
 		Custom1 = 16, // 16 // Custom channel 1, to be used at will by the application
 		Custom2 = 32, // 32 // Custom channel 2, to be used at will by the application

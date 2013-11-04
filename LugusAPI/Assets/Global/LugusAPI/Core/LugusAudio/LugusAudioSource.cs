@@ -5,6 +5,7 @@ public class LugusAudioSource : MonoBehaviour
 {
 	public string key = "";
 	public Lugus.AudioChannelType channelType = Lugus.AudioChannelType.NONE;
+	public bool stopOthers = false;
 	
 	protected void AssignKey()
 	{
@@ -25,7 +26,8 @@ public class LugusAudioSource : MonoBehaviour
 	public void Play()
 	{
 		LugusAudioChannel channel = LugusAudio.use.GetChannel( channelType );
-		channel.Play( LugusResources.use.GetAudio("test.audio.default"), false );
+		// TODO: best cache the GetAudio result and only re-fetch (and re-cache) when we receive callback from LugusResources) 
+		channel.Play( LugusResources.use.GetAudio("test.audio.default"), this.stopOthers );
 	}
 	
 	// Use this for initialization
