@@ -78,6 +78,12 @@ public class LugusResourceHelperText
 	
 	public void Parse( TextAsset text )
 	{
+		if( text == null )
+		{
+			texts.Clear();
+			return;
+		}
+		
 		Parse ( text.text );
 	}
 }

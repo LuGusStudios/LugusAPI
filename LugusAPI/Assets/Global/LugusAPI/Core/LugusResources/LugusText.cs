@@ -35,7 +35,7 @@ public class LugusText : MonoBehaviour
 		FindReferences();
 		AssignKey();
 		
-		LugusResources.use.onResourcesReloaded += UpdateText;
+		LugusResources.use.Localized.onResourcesReloaded += UpdateText;
 		
 		UpdateText();
 	}
