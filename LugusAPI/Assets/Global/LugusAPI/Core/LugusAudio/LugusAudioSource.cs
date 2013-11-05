@@ -7,6 +7,8 @@ public class LugusAudioSource : MonoBehaviour
 	public Lugus.AudioChannelType channelType = Lugus.AudioChannelType.NONE;
 	public bool stopOthers = false;
 	
+	public bool preload = true;
+	
 	protected void AssignKey()
 	{
 		if( string.IsNullOrEmpty(key) )
@@ -23,16 +25,46 @@ public class LugusAudioSource : MonoBehaviour
 		}
 	}
 	
+	protected AudioClip clip = null;
+	
 	public void Play()
 	{
+		if( clip == null )
+		{
+			FetchClip(); // here it's really needed, so no check for preload there
+		}
+		
+		if( clip == null )
+		{
+			Debug.LogError(name + " : audioClip " + key + " not found");
+			return;
+		}
+		
 		LugusAudioChannel channel = LugusAudio.use.GetChannel( channelType );
 		// TODO: best cache the GetAudio result and only re-fetch (and re-cache) when we receive callback from LugusResources) 
-		channel.Play( LugusResources.use.GetAudio("test.audio.default"), this.stopOthers );
+		channel.Play( clip, this.stopOthers ); 
 	}
 	
 	// Use this for initialization
 	void Start () 
 	{
+		AssignKey();
+		
+		LugusResources.use.onResourcesReloaded += UpdateClip;
+		
+		if( preload )
+			UpdateClip();
+	}
+	
+	public void UpdateClip()
+	{
+		if( preload )
+			FetchClip();
+	}
+	
+	protected void FetchClip()
+	{
+		clip = LugusResources.use.GetAudio(key);
 	}
 	
 	// Update is called once per frame
