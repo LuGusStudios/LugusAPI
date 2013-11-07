@@ -15,7 +15,10 @@ using System;
 
 public class LugusConfig : LugusSingletonRuntime<LugusConfigDefault>
 {
-
+	public static void Test()
+	{
+		Debug.Log("DOE MIJ WEG");
+	}
 	
 }
 
