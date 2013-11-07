@@ -15,15 +15,15 @@ public class ResourcesTester : MonoBehaviour {
 		if( t == this.transform )
 		{
 			Debug.Log (name + " : clicked texture");
-			// TODO: change language for resource manager
 			
-			if( LugusResources.use.LanguageID == "en" )
+			
+			if( LugusResources.use.Localized.LangID == "en" )
 			{
-				LugusResources.use.LanguageID = "nl";
+				LugusResources.use.Localized.LangID = "nl";
 			}
 			else
 			{
-				LugusResources.use.LanguageID = "en";
+				LugusResources.use.Localized.LangID = "en";
 			}
 		}
 		else if( t == GameObject.Find ("AudioButton").transform )

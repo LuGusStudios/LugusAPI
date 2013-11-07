@@ -14,15 +14,15 @@ namespace LugusResourceProvider
 public interface ILugusResourceProvider
 {
 	
-	string BaseURL { get; set; } 
+	//string BaseURL { get; set; } 
 	
-	Texture2D GetTexture(string key);
+	//Texture2D GetTexture(string key);
 	Texture2D GetTexture(string BaseURL, string key);
 	
-	AudioClip GetAudio(string key);
+	//AudioClip GetAudio(string key);
 	AudioClip GetAudio(string BaseURL, string key);
 	
-	TextAsset GetText(string key);
+	//TextAsset GetText(string key);
 	TextAsset GetText(string BaseURL, string key);
 }
 
