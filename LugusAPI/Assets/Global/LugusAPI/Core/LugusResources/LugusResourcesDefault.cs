@@ -1,26 +1,15 @@
-﻿using UnityEngine;
+﻿#define DEBUG_RESOURCES
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace LugusResourcesDelegates
+namespace Lugus
 {
 	public delegate void OnResourcesReloaded();
 }
 
-public interface ILugusResources
-{
-	event LugusResourcesDelegates.OnResourcesReloaded onResourcesReloaded;
-	
-	string LanguageID { get; set; }
-	
-	Texture2D GetTexture(string key);
-	AudioClip GetAudio(string key);
-	string GetText(string key);
-	
-	
-}
-
-public class LugusResources : LugusSingletonRuntime<LugusResourcesDefault>
+public class LugusResources : LugusSingletonExisting<LugusResourcesDefault>
 {
 	/*
 	private static ILugusResources _instance = null;
@@ -44,89 +33,73 @@ public class LugusResources : LugusSingletonRuntime<LugusResourcesDefault>
 		_instance = newInstance;
 	}
 	*/
+	
+	[System.Diagnostics.Conditional("DEBUG_RESOURCES")] 
+	public static void LogResourceLoad(string text)
+	{
+		Debug.Log ("LOAD : " + text);
+	}
 }
 
-public class LugusResourcesDefault : MonoBehaviour, ILugusResources
+public class LugusResourcesDefault : MonoBehaviour
 {
-	public event LugusResourcesDelegates.OnResourcesReloaded onResourcesReloaded;
+	public event Lugus.OnResourcesReloaded onResourcesReloaded;
 	
-	public List<ILugusResourceProvider> providers = null;
+	public List<ILugusResourceCollection> collections = null;
 	
-	protected LugusResourceProviderDisk diskProvider = null;
-	protected LugusResourceHelperText textHelper = null;
+	public LugusResourceCollectionDefault Shared = null;
+	public LugusResourceCollectionLocalized Localized = null;
 	
-	protected string sharedBaseURL = "Shared/";
-	protected string languagesBaseURL = "Languages/";
-	protected string languagesBaseLanguage = "en";
+	public Texture2D errorTexture = null;
+	public AudioClip errorAudio = null;
 	
-	public string LanguageID
-	{
-		get{ return languagesBaseLanguage; }
-		set{ SetBaseLanguage(value); }
-	}
-	
-	protected void FindReferences()
+	protected void LoadDefaultCollections()
 	{ 
-		if( this.diskProvider == null )
+		collections = new List<ILugusResourceCollection>();
+		
+		this.Shared = new LugusResourceCollectionDefault("Shared/");
+		this.Localized = new LugusResourceCollectionLocalized("Languages/");
+		
+		collections.Add ( Localized );
+		collections.Add ( Shared );
+		
+		foreach( ILugusResourceCollection collection in collections )
 		{
-			this.diskProvider = gameObject.AddComponent<LugusResourceProviderDisk>(); 
+			collection.onResourcesReloaded += CollectionReloaded;
 		}
 		
-		if( this.textHelper == null )
-		{
-			this.textHelper = new LugusResourceHelperText();
-		}
+		if( errorTexture == null )
+			errorTexture = Shared.GetTexture("error");
 		
-		if( this.providers == null || this.providers.Count == 0 )
-		{
-			providers = new List<ILugusResourceProvider>();
-			providers.Add( diskProvider );
-		}
+		if( errorAudio == null )
+			errorAudio = Shared.GetAudio("error");
 	}
 	
-	public void SetBaseLanguage(string langID)
+	protected void CollectionReloaded()
 	{
-		FindReferences();
-		
-		languagesBaseLanguage = langID;
-		
-		foreach( ILugusResourceProvider provider in providers )
-		{
-			provider.BaseURL = languagesBaseURL + languagesBaseLanguage + "/";
-		}
-		
-		// TODO: now we're loading all text files from disk. If this is no longer the case, we should update this part
-		textHelper.Parse( diskProvider.GetText("texts") );
-		
 		if( onResourcesReloaded != null )
-		{
 			onResourcesReloaded();
-		}
 	}
-	
-	
 	
 	public void Awake()
 	{
-		FindReferences();
-		SetBaseLanguage( languagesBaseLanguage );
+		LoadDefaultCollections();
 	}
 	
 	public Texture2D GetTexture(string key)
 	{	
 		Texture2D output = null;
 		
-		foreach( ILugusResourceProvider provider in providers )
+		foreach( ILugusResourceCollection collection in collections )
 		{
-			output = provider.GetTexture(key);
-			if( output != null )
+			output = collection.GetTexture(key);
+			if( output != errorTexture )
 				break;
 		}
 		
-		if( output == null )
+		if( output == errorTexture )
 		{
 			Debug.LogError(name + " : Texture " + key + " was not found!");
-			output = diskProvider.GetTexture(sharedBaseURL, "error"); 
 		}
 		
 		return output;
@@ -137,17 +110,16 @@ public class LugusResourcesDefault : MonoBehaviour, ILugusResources
 	{
 		AudioClip output = null;
 		
-		foreach( ILugusResourceProvider provider in providers )
+		foreach( ILugusResourceCollection collection in collections )
 		{
-			output = provider.GetAudio(key);
-			if( output != null )
+			output = collection.GetAudio(key);
+			if( output != errorAudio )
 				break;
 		}
 		
-		if( output == null )
+		if( output == errorAudio )
 		{
 			Debug.LogError(name + " : AudioClip " + key + " was not found!");
-			output = diskProvider.GetAudio(sharedBaseURL, "error"); 
 		}
 		
 		return output;
@@ -155,7 +127,21 @@ public class LugusResourcesDefault : MonoBehaviour, ILugusResources
 	
 	public string GetText(string key)
 	{
-		return textHelper.Get ( key );
+		string output = null; 
+		
+		foreach( ILugusResourceCollection collection in collections )
+		{
+			output = collection.GetText(key);
+			if( output != ("[" + key + "]") )
+				break;
+		}
+		
+		if( output == ("[" + key + "]") )
+		{
+			Debug.LogError(name + " : Text " + key + " was not found!");
+		}
+		
+		return output;
 	}
 
 }
