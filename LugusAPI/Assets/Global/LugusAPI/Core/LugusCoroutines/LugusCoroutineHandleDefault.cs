@@ -14,6 +14,7 @@ public interface ILugusCoroutineHandle
 	void StopRoutineDelayed(float delay);
 	
 	void Claim();
+	void Claim(string name);
 	void Release();
 }
 
