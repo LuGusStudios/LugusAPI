@@ -12,7 +12,2165 @@ MonoBehaviour:
   m_Name: ConsolePro_Settings
   m_EditorClassIdentifier: 
   filterGroups: []
-  entries: []
+  entries:
+  - logType: 3
+    originalText: 'LOAD : Shared/Text/texts'
+    text: 'LOAD : Shared/Text/texts'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetText(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:50)
+
+      LugusResourceCollectionDefault:UpdateText() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:112)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:58)
+
+      LugusResourceCollectionDefault:.ctor(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:31)
+
+      LugusResourcesDefault:LoadDefaultCollections() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:60)
+
+      LugusResourcesDefault:Awake() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:86)
+
+'
+    timeStamp: 05:10:09.2018
+    highestTimeStamp: 05:10:09.2018
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetText
+      lineNumber: 50
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 50'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: UpdateText
+      lineNumber: 112
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.UpdateText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 112'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 58
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 58'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: .ctor
+      lineNumber: 31
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault..ctor()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 31'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: LoadDefaultCollections
+      lineNumber: 60
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.LoadDefaultCollections()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 60'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: Awake
+      lineNumber: 86
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.Awake()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 86'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/en/Text/texts'
+    text: 'LOAD : Languages/en/Text/texts'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetText(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:50)
+
+      LugusResourceCollectionDefault:UpdateText() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:112)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:58)
+
+      LugusResourceCollectionLocalized:set_BaseURL(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:153)
+
+      LugusResourceCollectionLocalized:.ctor(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:132)
+
+      LugusResourcesDefault:LoadDefaultCollections() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:61)
+
+      LugusResourcesDefault:Awake() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:86)
+
+'
+    timeStamp: 05:10:09.2149
+    highestTimeStamp: 05:10:09.2149
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetText
+      lineNumber: 50
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 50'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: UpdateText
+      lineNumber: 112
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.UpdateText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 112'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 58
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 58'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_BaseURL
+      lineNumber: 153
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_BaseURL()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 153'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: .ctor
+      lineNumber: 132
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized..ctor()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 132'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: LoadDefaultCollections
+      lineNumber: 61
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.LoadDefaultCollections()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 61'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: Awake
+      lineNumber: 86
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.Awake()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 86'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Shared/Textures/error'
+    text: 'LOAD : Shared/Textures/error'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetTexture(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:24)
+
+      LugusResourceCollectionDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:70)
+
+      LugusResourcesDefault:LoadDefaultCollections() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:72)
+
+      LugusResourcesDefault:Awake() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:86)
+
+'
+    timeStamp: 05:10:09.2190
+    highestTimeStamp: 05:10:09.2190
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetTexture
+      lineNumber: 24
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 24'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetTexture
+      lineNumber: 70
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 70'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: LoadDefaultCollections
+      lineNumber: 72
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.LoadDefaultCollections()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 72'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: Awake
+      lineNumber: 86
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.Awake()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 86'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Shared/Audio/error'
+    text: 'LOAD : Shared/Audio/error'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetAudio(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:37)
+
+      LugusResourceCollectionDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:92)
+
+      LugusResourcesDefault:LoadDefaultCollections() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:75)
+
+      LugusResourcesDefault:Awake() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:86)
+
+'
+    timeStamp: 05:10:09.2201
+    highestTimeStamp: 05:10:09.2201
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetAudio
+      lineNumber: 37
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 37'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetAudio
+      lineNumber: 92
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 92'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: LoadDefaultCollections
+      lineNumber: 75
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.LoadDefaultCollections()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 75'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: Awake
+      lineNumber: 86
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.Awake()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 86'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/en/Audio/test.audio.default'
+    text: 'LOAD : Languages/en/Audio/test.audio.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetAudio(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:37)
+
+      LugusResourceCollectionDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:92)
+
+      LugusResourcesDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:115)
+
+      LugusAudioSource:FetchClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:67)
+
+      LugusAudioSource:UpdateClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:62)
+
+      LugusAudioSource:Start() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:56)
+
+'
+    timeStamp: 05:10:09.3051
+    highestTimeStamp: 05:10:09.3051
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetAudio
+      lineNumber: 37
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 37'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetAudio
+      lineNumber: 92
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 92'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetAudio
+      lineNumber: 115
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 115'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: FetchClip
+      lineNumber: 67
+      charNumber: 0
+      stackLabel: LugusAudioSource.FetchClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 67'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: UpdateClip
+      lineNumber: 62
+      charNumber: 0
+      stackLabel: LugusAudioSource.UpdateClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 62'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: Start
+      lineNumber: 56
+      charNumber: 0
+      stackLabel: LugusAudioSource.Start()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 56'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/en/Textures/test.texture.default'
+    text: 'LOAD : Languages/en/Textures/test.texture.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetTexture(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:24)
+
+      LugusResourceCollectionDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:70)
+
+      LugusResourcesDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:95)
+
+      LugusTexture:UpdateTexture() (at Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs:31)
+
+      LugusTexture:Start() (at Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs:26)
+
+'
+    timeStamp: 05:10:09.3167
+    highestTimeStamp: 05:10:09.3167
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode:
+      - "38:   \tpublic static void LogResourceLoad(string text)"
+      - "39:   \t{"
+      - "40:   \t\tDebug.Log (\"LOAD : \" + text);"
+      - "41:   \t}"
+      - '42:   }'
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetTexture
+      lineNumber: 24
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 24'
+      sourceCode:
+      - "22:   \tpublic Texture2D GetTexture(string BaseURL, string key)"
+      - "23:   \t{"
+      - "24:   \t\tLugusResources.LogResourceLoad( BaseURL + \"Textures/\" + key );"
+      - "25:   \t\treturn Resources.Load( BaseURL + \"Textures/\" + key, typeof(Texture2D)
+        ) as Texture2D;"
+      - "26:   \t}"
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetTexture
+      lineNumber: 70
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 70'
+      sourceCode:
+      - "68:   \t\tforeach( ILugusResourceProvider provider in providers )"
+      - "69:   \t\t{"
+      - "70:   \t\t\toutput = provider.GetTexture(_URL, key);"
+      - "71:   \t\t\tif( output != null )"
+      - "72:   \t\t\t\tbreak;"
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetTexture
+      lineNumber: 95
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 95'
+      sourceCode:
+      - "93:   \t\tforeach( ILugusResourceCollection collection in collections )"
+      - "94:   \t\t{"
+      - "95:   \t\t\toutput = collection.GetTexture(key);"
+      - "96:   \t\t\tif( output != errorTexture )"
+      - "97:   \t\t\t\tbreak;"
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs
+      className: LugusTexture
+      methodName: UpdateTexture
+      lineNumber: 31
+      charNumber: 0
+      stackLabel: LugusTexture.UpdateTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusTexture.cs line 31'
+      sourceCode:
+      - "29:   \tprotected void UpdateTexture()"
+      - "30:   \t{"
+      - "31:   \t\tthis.renderer.material.mainTexture = LugusResources.use.GetTexture(key);"
+      - "32:   \t}"
+      - "33:   \t"
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs
+      className: LugusTexture
+      methodName: Start
+      lineNumber: 26
+      charNumber: 0
+      stackLabel: LugusTexture.Start()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusTexture.cs line 26'
+      sourceCode:
+      - "24:   \t\tLugusResources.use.onResourcesReloaded += UpdateTexture;"
+      - "25:   \t\t"
+      - "26:   \t\tUpdateTexture();"
+      - "27:   \t}"
+      - "28:   \t"
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 2
+    originalText: 'Text : key was empty! using TextMesh.text as key : test.text'
+    text: 'Text : key was empty! using TextMesh.text as key : test.text'
+    stackTrace: 'UnityEngine.Debug:LogWarning(Object)
+
+      LugusText:AssignKey() (at Assets/Global/LugusAPI/Core/LugusResources/LugusText.cs:28)
+
+      LugusText:Start() (at Assets/Global/LugusAPI/Core/LugusResources/LugusText.cs:36)
+
+'
+    timeStamp: 05:10:09.3191
+    highestTimeStamp: 05:10:09.3191
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusText.cs
+      className: LugusText
+      methodName: AssignKey
+      lineNumber: 28
+      charNumber: 0
+      stackLabel: LugusText.AssignKey()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusText.cs line 28'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusText.cs
+      className: LugusText
+      methodName: Start
+      lineNumber: 36
+      charNumber: 0
+      stackLabel: LugusText.Start()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusText.cs line 36'
+      sourceCode: []
+    primaryMethod: LugusText.AssignKey()
+    primaryFile: LugusText.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 2
+    originalText: 'Text2 : key was empty! using TextMesh.text as key : test.text2'
+    text: 'Text2 : key was empty! using TextMesh.text as key : test.text2'
+    stackTrace: 'UnityEngine.Debug:LogWarning(Object)
+
+      LugusText:AssignKey() (at Assets/Global/LugusAPI/Core/LugusResources/LugusText.cs:28)
+
+      LugusText:Start() (at Assets/Global/LugusAPI/Core/LugusResources/LugusText.cs:36)
+
+'
+    timeStamp: 05:10:09.3216
+    highestTimeStamp: 05:10:09.3216
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusText.cs
+      className: LugusText
+      methodName: AssignKey
+      lineNumber: 28
+      charNumber: 0
+      stackLabel: LugusText.AssignKey()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusText.cs line 28'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusText.cs
+      className: LugusText
+      methodName: Start
+      lineNumber: 36
+      charNumber: 0
+      stackLabel: LugusText.Start()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusText.cs line 36'
+      sourceCode: []
+    primaryMethod: LugusText.AssignKey()
+    primaryFile: LugusText.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 2
+    originalText: 'LuGusSingletonRuntime:CheckInstance : LugusInputDefault does not
+      exist! Creating it...'
+    text: 'LuGusSingletonRuntime:CheckInstance : LugusInputDefault does not exist!
+      Creating it...'
+    stackTrace: 'UnityEngine.Debug:LogWarning(Object)
+
+      LugusSingletonRuntime`1:CheckInstance() (at Assets/Global/LugusAPI/Core/LugusSingletons.cs:90)
+
+      LugusSingletonRuntime`1:get_use() (at Assets/Global/LugusAPI/Core/LugusSingletons.cs:72)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:14)
+
+'
+    timeStamp: 05:10:09.3315
+    highestTimeStamp: 05:10:09.3315
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusSingletons.cs
+      className: LugusSingletonRuntime`1
+      methodName: CheckInstance
+      lineNumber: 90
+      charNumber: 0
+      stackLabel: LugusSingletonRuntime`1.CheckInstance()
+      stackLabel2: '    Global/LugusAPI/Core/LugusSingletons.cs line 90'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusSingletons.cs
+      className: LugusSingletonRuntime`1
+      methodName: get_use
+      lineNumber: 72
+      charNumber: 0
+      stackLabel: LugusSingletonRuntime`1.get_use()
+      stackLabel2: '    Global/LugusAPI/Core/LugusSingletons.cs line 72'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 14
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 14'
+      sourceCode: []
+    primaryMethod: LugusSingletonRuntime`1.CheckInstance()
+    primaryFile: LugusSingletons.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 2
+    originalText: 'LuGusSingletonRuntime:CheckInstance : LugusAudioDefault does not
+      exist! Creating it...'
+    text: 'LuGusSingletonRuntime:CheckInstance : LugusAudioDefault does not exist!
+      Creating it...'
+    stackTrace: 'UnityEngine.Debug:LogWarning(Object)
+
+      LugusSingletonRuntime`1:CheckInstance() (at Assets/Global/LugusAPI/Core/LugusSingletons.cs:90)
+
+      LugusSingletonRuntime`1:get_use() (at Assets/Global/LugusAPI/Core/LugusSingletons.cs:72)
+
+      LugusAudioSource:Play() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:43)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:32)
+
+'
+    timeStamp: 05:10:13.9385
+    highestTimeStamp: 05:10:13.9385
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusSingletons.cs
+      className: LugusSingletonRuntime`1
+      methodName: CheckInstance
+      lineNumber: 90
+      charNumber: 0
+      stackLabel: LugusSingletonRuntime`1.CheckInstance()
+      stackLabel2: '    Global/LugusAPI/Core/LugusSingletons.cs line 90'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusSingletons.cs
+      className: LugusSingletonRuntime`1
+      methodName: get_use
+      lineNumber: 72
+      charNumber: 0
+      stackLabel: LugusSingletonRuntime`1.get_use()
+      stackLabel2: '    Global/LugusAPI/Core/LugusSingletons.cs line 72'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: Play
+      lineNumber: 43
+      charNumber: 0
+      stackLabel: LugusAudioSource.Play()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 43'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 32
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 32'
+      sourceCode: []
+    primaryMethod: LugusSingletonRuntime`1.CheckInstance()
+    primaryFile: LugusSingletons.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'Plane : clicked texture'
+    text: 'Plane : clicked texture'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:17)
+
+'
+    timeStamp: 05:10:15.0137
+    highestTimeStamp: 05:10:15.0137
+    stackEntries:
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 17
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 17'
+      sourceCode: []
+    primaryMethod: ResourcesTester.Update()
+    primaryFile: ResourcesTester.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/nl/Text/texts'
+    text: 'LOAD : Languages/nl/Text/texts'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetText(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:50)
+
+      LugusResourceCollectionDefault:UpdateText() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:112)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:58)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:22)
+
+'
+    timeStamp: 05:10:15.0145
+    highestTimeStamp: 05:10:15.0145
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetText
+      lineNumber: 50
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 50'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: UpdateText
+      lineNumber: 112
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.UpdateText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 112'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 58
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 58'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 22
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 22'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/nl/Audio/test.audio.default'
+    text: 'LOAD : Languages/nl/Audio/test.audio.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetAudio(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:37)
+
+      LugusResourceCollectionDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:92)
+
+      LugusResourcesDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:115)
+
+      LugusAudioSource:FetchClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:67)
+
+      LugusAudioSource:UpdateClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:62)
+
+      LugusResourcesDefault:CollectionReloaded() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:81)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:61)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:22)
+
+'
+    timeStamp: 05:10:15.0161
+    highestTimeStamp: 05:10:15.0161
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetAudio
+      lineNumber: 37
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 37'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetAudio
+      lineNumber: 92
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 92'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetAudio
+      lineNumber: 115
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 115'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: FetchClip
+      lineNumber: 67
+      charNumber: 0
+      stackLabel: LugusAudioSource.FetchClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 67'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: UpdateClip
+      lineNumber: 62
+      charNumber: 0
+      stackLabel: LugusAudioSource.UpdateClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 62'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: CollectionReloaded
+      lineNumber: 81
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.CollectionReloaded()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 81'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 61
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 61'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 22
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 22'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/nl/Textures/test.texture.default'
+    text: 'LOAD : Languages/nl/Textures/test.texture.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetTexture(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:24)
+
+      LugusResourceCollectionDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:70)
+
+      LugusResourcesDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:95)
+
+      LugusTexture:UpdateTexture() (at Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs:31)
+
+      LugusResourcesDefault:CollectionReloaded() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:81)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:61)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:22)
+
+'
+    timeStamp: 05:10:15.0204
+    highestTimeStamp: 05:10:15.0204
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetTexture
+      lineNumber: 24
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 24'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetTexture
+      lineNumber: 70
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 70'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetTexture
+      lineNumber: 95
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 95'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs
+      className: LugusTexture
+      methodName: UpdateTexture
+      lineNumber: 31
+      charNumber: 0
+      stackLabel: LugusTexture.UpdateTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusTexture.cs line 31'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: CollectionReloaded
+      lineNumber: 81
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.CollectionReloaded()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 81'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 61
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 61'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 22
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 22'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: Changed language to nl
+    text: Changed language to nl
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:145)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:22)
+
+'
+    timeStamp: 05:10:15.0217
+    highestTimeStamp: 05:10:15.0217
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 145
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 145'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 22
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 22'
+      sourceCode: []
+    primaryMethod: LugusResourceCollectionLocalized.set_LangID()
+    primaryFile: LugusResourceCollection.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'Plane : clicked texture'
+    text: 'Plane : clicked texture'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:17)
+
+'
+    timeStamp: 05:10:27.2877
+    highestTimeStamp: 05:10:27.2877
+    stackEntries:
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 17
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 17'
+      sourceCode: []
+    primaryMethod: ResourcesTester.Update()
+    primaryFile: ResourcesTester.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/en/Text/texts'
+    text: 'LOAD : Languages/en/Text/texts'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetText(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:50)
+
+      LugusResourceCollectionDefault:UpdateText() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:112)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:58)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:26)
+
+'
+    timeStamp: 05:10:27.2885
+    highestTimeStamp: 05:10:27.2885
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetText
+      lineNumber: 50
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 50'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: UpdateText
+      lineNumber: 112
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.UpdateText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 112'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 58
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 58'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 26
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 26'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/en/Audio/test.audio.default'
+    text: 'LOAD : Languages/en/Audio/test.audio.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetAudio(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:37)
+
+      LugusResourceCollectionDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:92)
+
+      LugusResourcesDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:115)
+
+      LugusAudioSource:FetchClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:67)
+
+      LugusAudioSource:UpdateClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:62)
+
+      LugusResourcesDefault:CollectionReloaded() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:81)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:61)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:26)
+
+'
+    timeStamp: 05:10:27.2960
+    highestTimeStamp: 05:10:27.2960
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetAudio
+      lineNumber: 37
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 37'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetAudio
+      lineNumber: 92
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 92'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetAudio
+      lineNumber: 115
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 115'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: FetchClip
+      lineNumber: 67
+      charNumber: 0
+      stackLabel: LugusAudioSource.FetchClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 67'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: UpdateClip
+      lineNumber: 62
+      charNumber: 0
+      stackLabel: LugusAudioSource.UpdateClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 62'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: CollectionReloaded
+      lineNumber: 81
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.CollectionReloaded()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 81'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 61
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 61'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 26
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 26'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/en/Textures/test.texture.default'
+    text: 'LOAD : Languages/en/Textures/test.texture.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetTexture(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:24)
+
+      LugusResourceCollectionDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:70)
+
+      LugusResourcesDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:95)
+
+      LugusTexture:UpdateTexture() (at Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs:31)
+
+      LugusResourcesDefault:CollectionReloaded() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:81)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:61)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:26)
+
+'
+    timeStamp: 05:10:27.2982
+    highestTimeStamp: 05:10:27.2982
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetTexture
+      lineNumber: 24
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 24'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetTexture
+      lineNumber: 70
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 70'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetTexture
+      lineNumber: 95
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 95'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs
+      className: LugusTexture
+      methodName: UpdateTexture
+      lineNumber: 31
+      charNumber: 0
+      stackLabel: LugusTexture.UpdateTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusTexture.cs line 31'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: CollectionReloaded
+      lineNumber: 81
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.CollectionReloaded()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 81'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 61
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 61'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 26
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 26'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: Changed language to en
+    text: Changed language to en
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:145)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:26)
+
+'
+    timeStamp: 05:10:27.2999
+    highestTimeStamp: 05:10:27.2999
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 145
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 145'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 26
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 26'
+      sourceCode: []
+    primaryMethod: LugusResourceCollectionLocalized.set_LangID()
+    primaryFile: LugusResourceCollection.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'Plane : clicked texture'
+    text: 'Plane : clicked texture'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:17)
+
+'
+    timeStamp: 05:10:28.8986
+    highestTimeStamp: 05:10:28.8986
+    stackEntries:
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 17
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 17'
+      sourceCode: []
+    primaryMethod: ResourcesTester.Update()
+    primaryFile: ResourcesTester.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/nl/Text/texts'
+    text: 'LOAD : Languages/nl/Text/texts'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetText(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:50)
+
+      LugusResourceCollectionDefault:UpdateText() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:112)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:58)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:22)
+
+'
+    timeStamp: 05:10:28.8993
+    highestTimeStamp: 05:10:28.8993
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetText
+      lineNumber: 50
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 50'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: UpdateText
+      lineNumber: 112
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.UpdateText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 112'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 58
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 58'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 22
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 22'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/nl/Audio/test.audio.default'
+    text: 'LOAD : Languages/nl/Audio/test.audio.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetAudio(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:37)
+
+      LugusResourceCollectionDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:92)
+
+      LugusResourcesDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:115)
+
+      LugusAudioSource:FetchClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:67)
+
+      LugusAudioSource:UpdateClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:62)
+
+      LugusResourcesDefault:CollectionReloaded() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:81)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:61)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:22)
+
+'
+    timeStamp: 05:10:28.9006
+    highestTimeStamp: 05:10:28.9006
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetAudio
+      lineNumber: 37
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 37'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetAudio
+      lineNumber: 92
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 92'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetAudio
+      lineNumber: 115
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 115'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: FetchClip
+      lineNumber: 67
+      charNumber: 0
+      stackLabel: LugusAudioSource.FetchClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 67'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: UpdateClip
+      lineNumber: 62
+      charNumber: 0
+      stackLabel: LugusAudioSource.UpdateClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 62'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: CollectionReloaded
+      lineNumber: 81
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.CollectionReloaded()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 81'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 61
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 61'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 22
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 22'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/nl/Textures/test.texture.default'
+    text: 'LOAD : Languages/nl/Textures/test.texture.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetTexture(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:24)
+
+      LugusResourceCollectionDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:70)
+
+      LugusResourcesDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:95)
+
+      LugusTexture:UpdateTexture() (at Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs:31)
+
+      LugusResourcesDefault:CollectionReloaded() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:81)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:61)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:22)
+
+'
+    timeStamp: 05:10:28.9020
+    highestTimeStamp: 05:10:28.9020
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetTexture
+      lineNumber: 24
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 24'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetTexture
+      lineNumber: 70
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 70'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetTexture
+      lineNumber: 95
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 95'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs
+      className: LugusTexture
+      methodName: UpdateTexture
+      lineNumber: 31
+      charNumber: 0
+      stackLabel: LugusTexture.UpdateTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusTexture.cs line 31'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: CollectionReloaded
+      lineNumber: 81
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.CollectionReloaded()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 81'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 61
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 61'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 22
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 22'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: Changed language to nl
+    text: Changed language to nl
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:145)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:22)
+
+'
+    timeStamp: 05:10:28.9028
+    highestTimeStamp: 05:10:28.9028
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 145
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 145'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 22
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 22'
+      sourceCode: []
+    primaryMethod: LugusResourceCollectionLocalized.set_LangID()
+    primaryFile: LugusResourceCollection.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'Plane : clicked texture'
+    text: 'Plane : clicked texture'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:17)
+
+'
+    timeStamp: 05:10:29.9657
+    highestTimeStamp: 05:10:29.9657
+    stackEntries:
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 17
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 17'
+      sourceCode: []
+    primaryMethod: ResourcesTester.Update()
+    primaryFile: ResourcesTester.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/en/Text/texts'
+    text: 'LOAD : Languages/en/Text/texts'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetText(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:50)
+
+      LugusResourceCollectionDefault:UpdateText() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:112)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:58)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:26)
+
+'
+    timeStamp: 05:10:29.9664
+    highestTimeStamp: 05:10:29.9664
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetText
+      lineNumber: 50
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 50'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: UpdateText
+      lineNumber: 112
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.UpdateText()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 112'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 58
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 58'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 26
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 26'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/en/Audio/test.audio.default'
+    text: 'LOAD : Languages/en/Audio/test.audio.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetAudio(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:37)
+
+      LugusResourceCollectionDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:92)
+
+      LugusResourcesDefault:GetAudio(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:115)
+
+      LugusAudioSource:FetchClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:67)
+
+      LugusAudioSource:UpdateClip() (at Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs:62)
+
+      LugusResourcesDefault:CollectionReloaded() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:81)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:61)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:26)
+
+'
+    timeStamp: 05:10:29.9675
+    highestTimeStamp: 05:10:29.9675
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetAudio
+      lineNumber: 37
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 37'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetAudio
+      lineNumber: 92
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 92'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetAudio
+      lineNumber: 115
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetAudio()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 115'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: FetchClip
+      lineNumber: 67
+      charNumber: 0
+      stackLabel: LugusAudioSource.FetchClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 67'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs
+      className: LugusAudioSource
+      methodName: UpdateClip
+      lineNumber: 62
+      charNumber: 0
+      stackLabel: LugusAudioSource.UpdateClip()
+      stackLabel2: '    Global/LugusAPI/Core/LugusAudio/LugusAudioSource.cs line 62'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: CollectionReloaded
+      lineNumber: 81
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.CollectionReloaded()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 81'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 61
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 61'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 26
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 26'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: 'LOAD : Languages/en/Textures/test.texture.default'
+    text: 'LOAD : Languages/en/Textures/test.texture.default'
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResources:LogResourceLoad(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:40)
+
+      LugusResourceProviderDisk:GetTexture(String, String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs:24)
+
+      LugusResourceCollectionDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:70)
+
+      LugusResourcesDefault:GetTexture(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:95)
+
+      LugusTexture:UpdateTexture() (at Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs:31)
+
+      LugusResourcesDefault:CollectionReloaded() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs:81)
+
+      LugusResourceCollectionDefault:Reload() (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:61)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:143)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:26)
+
+'
+    timeStamp: 05:10:29.9750
+    highestTimeStamp: 05:10:29.9750
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResources
+      methodName: LogResourceLoad
+      lineNumber: 40
+      charNumber: 0
+      stackLabel: LugusResources.LogResourceLoad()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 40'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+      className: LugusResourceProviderDisk
+      methodName: GetTexture
+      lineNumber: 24
+      charNumber: 0
+      stackLabel: LugusResourceProviderDisk.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceProviderDisk.cs
+        line 24'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: GetTexture
+      lineNumber: 70
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 70'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: GetTexture
+      lineNumber: 95
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.GetTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 95'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusTexture.cs
+      className: LugusTexture
+      methodName: UpdateTexture
+      lineNumber: 31
+      charNumber: 0
+      stackLabel: LugusTexture.UpdateTexture()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusTexture.cs line 31'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+      className: LugusResourcesDefault
+      methodName: CollectionReloaded
+      lineNumber: 81
+      charNumber: 0
+      stackLabel: LugusResourcesDefault.CollectionReloaded()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourcesDefault.cs
+        line 81'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionDefault
+      methodName: Reload
+      lineNumber: 61
+      charNumber: 0
+      stackLabel: LugusResourceCollectionDefault.Reload()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 61'
+      sourceCode: []
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 143
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 143'
+      sourceCode: []
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 26
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 26'
+      sourceCode: []
+    primaryMethod: LugusResources.LogResourceLoad()
+    primaryFile: LugusResourcesDefault.cs
+    logCount: 0
+    ownerClassName: 
+  - logType: 3
+    originalText: Changed language to en
+    text: Changed language to en
+    stackTrace: 'UnityEngine.Debug:Log(Object)
+
+      LugusResourceCollectionLocalized:set_LangID(String) (at Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs:145)
+
+      ResourcesTester:Update() (at Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs:26)
+
+'
+    timeStamp: 05:10:29.9770
+    highestTimeStamp: 05:10:29.9770
+    stackEntries:
+    - fileName: Assets/Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+      className: LugusResourceCollectionLocalized
+      methodName: set_LangID
+      lineNumber: 145
+      charNumber: 0
+      stackLabel: LugusResourceCollectionLocalized.set_LangID()
+      stackLabel2: '    Global/LugusAPI/Core/LugusResources/LugusResourceCollection.cs
+        line 145'
+      sourceCode:
+      - "143:   \t\t\tReload(); "
+      - "144:   \t\t\t"
+      - "145:   \t\t\tDebug.Log (\"Changed language to \" + _langID);"
+      - "146:   \t\t}"
+      - "147:   \t}"
+    - fileName: Assets/Scenes/LugusResources/Scripts/ResourcesTester.cs
+      className: ResourcesTester
+      methodName: Update
+      lineNumber: 26
+      charNumber: 0
+      stackLabel: ResourcesTester.Update()
+      stackLabel2: '    Scenes/LugusResources/Scripts/ResourcesTester.cs line 26'
+      sourceCode:
+      - "24:   \t\t\telse"
+      - "25:   \t\t\t{"
+      - "26:   \t\t\t\tLugusResources.use.Localized.LangID = \"en\";"
+      - "27:   \t\t\t}"
+      - "28:   \t\t}"
+    primaryMethod: LugusResourceCollectionLocalized.set_LangID()
+    primaryFile: LugusResourceCollection.cs
+    logCount: 0
+    ownerClassName: 
   rects: []
   showLogs: 1
   showWarnings: 1
