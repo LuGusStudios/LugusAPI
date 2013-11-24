@@ -95,7 +95,7 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 	{
 		foreach (ILugusConfigDataHelper parser in parsers)
 		{
-			string rawData = string.Empty;
+			string rawData = parser.ParseTo(data);
 
 			// Compose the full path to write away to profile
 			string fullpath = URL + key + parser.FileExtension;

@@ -47,89 +47,71 @@ public class LugusConfigDefault : MonoBehaviour
 	}
 
 
-	private ILugusConfigProfile _systemProfile = null;
-	private ILugusConfigProfile _currentUser = null;
-	private List<ILugusConfigProfile> _profiles = null;
+	private ILugusConfigProfile _systemProfile = null;	// Profile holding system variables, i.e. graphics and sound options.
+	private ILugusConfigProfile _currentUser = null;	// Profile holding user specific variables, i.e. character health and strength.
+	private List<ILugusConfigProfile> _profiles = null;	// All profiles registered in this configuration, incl. system profile.
 	#endregion
 
 	// Reload all profiles found in the Config folder.
 	public void ReloadDefaultProfiles()
 	{
-
-		// Load the profiles found in the config folder of the application datapath and try to set the latest user as the current user.
-		// If no profiles could be found in the folder, then create a default system and user profile.
-
-		// Clear the current profiles registered
 		_profiles = new List<ILugusConfigProfile>();
 		_systemProfile = null;
 		_currentUser = null;
 
-		Debug.Log(Application.dataPath);
+		// Load the profiles found in the config folder of the application datapath
+		// and try to set the latest user as the current user.
+		// If no profiles could be found in the folder,
+		// then create a default system and user profile.
 
-		string configpath = Application.dataPath + "Config/";
-		string[] configFileNames = Directory.GetFiles(configpath, ".xml");
+		string configpath = Application.dataPath + "/Config/";
+		DirectoryInfo directoryInfo = new DirectoryInfo(configpath);
+		FileInfo[] files = directoryInfo.GetFiles("*.xml");
 
-
-		if (configFileNames.Length > 0)
+		if (files.Length > 0)
 		{
-
 			// Create and load profiles
-			foreach (string configFileName in configFileNames)
+			foreach (FileInfo fileInfo in files)
 			{
-				string profileName = configFileName.Remove(configFileName.LastIndexOf(".xml"));
+				string profileName = fileInfo.Name.Remove(fileInfo.Name.LastIndexOf(".xml"));
 				LugusConfigProfileDefault profile = new LugusConfigProfileDefault(profileName);
+				profile.Load();
 
 				if (profileName == "System")
 					_systemProfile = profile;
 
 				_profiles.Add(profile);
 			}
+		}
 
-			// If a system profile was found, then search for the latest user
-			if (_systemProfile != null)
-			{
-				string lastestUser = _systemProfile.GetString("User.Latest", string.Empty);
-				if (!string.IsNullOrEmpty(lastestUser))
-					_currentUser = _profiles.Find(profile => profile.Name == lastestUser);
-			}
-			else
-				System = new LugusConfigProfileDefault("System");
+		if (_systemProfile == null)
+		{
+			LugusConfigProfileDefault sysProfile = new LugusConfigProfileDefault("System");
+			this.System = sysProfile;
+			_profiles.Add(sysProfile);
+		}
+		else
+		{
+			string lastestUser = _systemProfile.GetString("User.Latest", string.Empty);
+			if (!string.IsNullOrEmpty(lastestUser))
+				_currentUser = _profiles.Find(profile => profile.Name == lastestUser);
+		}
 
-			// If no current user is set, create a default user profile
+		if (_currentUser == null)
+		{
 			_currentUser = new LugusConfigProfileDefault("Player");
 			_profiles.Add(_currentUser);
-
 		}
-		
-
 	}
 
 	public void SaveProfiles()
 	{
 
-		// Go over all profiles, store them, and build up the list of profile keys
-		string profileKeys = string.Empty;
-		for (int i = 0; i < _profiles.Count; ++i)
-		{
+		if ((_systemProfile != null) && (_currentUser != null))
+			_systemProfile.SetString("User.Latest", _currentUser.Name, true);
 
-			ILugusConfigProfile profile = _profiles[i];
+		foreach (ILugusConfigProfile profile in _profiles)
 			profile.Store();
-			
-			profileKeys += profile.Name;
-
-			if (i < (_profiles.Count - 1))
-				profileKeys += "@@@";
-
-		}
-
-		// Store the list of profile keys in PlayerPrefs
-		PlayerPrefs.SetString("Profile.Users", profileKeys);
-
-		// Save the profile key of the current user in PlayerPrefs
-		PlayerPrefs.SetString("Profile.Latest", _currentUser.Name);
-
-		// Save the system profile
-		_systemProfile.Store();
 	}
 
 	public ILugusConfigProfile FindProfile(string name)
