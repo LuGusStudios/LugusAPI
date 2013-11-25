@@ -56,18 +56,40 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 	{
 		get
 		{
-			return _profileName;
+			return _name;
 		}
 		set
 		{
-			_profileName = value;
+			_name = value;
 		}
 	}
-	public Dictionary<string, string> Data = null;
-	public List<ILugusConfigProvider> Providers = null;
+	public Dictionary<string, string> Data
+	{
+		get
+		{
+			return _data;
+		}
+		set
+		{
+			_data = value;
+		}
+	}
+	public List<ILugusConfigProvider> Providers
+	{
+		get
+		{
+			return _providers;
+		}
+		set
+		{
+			_providers = value;
+		}
+	}
 
 	[SerializeField]
-	private string _profileName = "";
+	private string _name = "";
+	private Dictionary<string, string> _data = null;
+	private List<ILugusConfigProvider> _providers = null;
 
 	private bool _changed = false;	// True if the data has changed by using one of the setter methods. Used to save time if no changes have been made to the profile.
 	#endregion
@@ -75,9 +97,9 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 	// Add a default provider pointing at the config folder. Doesn't load a profile from file.
 	public LugusConfigProfileDefault(string name)
 	{
-		_profileName = name;
-		Data = new Dictionary<string, string>();
-		Providers = new List<ILugusConfigProvider>();
+		_name = name;
+		_data = new Dictionary<string, string>();
+		_providers = new List<ILugusConfigProvider>();
 		_changed = true;
 
 		LugusConfigProviderDefault provider = new LugusConfigProviderDefault(Application.dataPath + "/Config/");
@@ -88,9 +110,9 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 	// from the file %path%/Config/%name%.xml or %path%/Config/%name%.json.
 	public LugusConfigProfileDefault(string name, string path)
 	{
-		_profileName = name;
-		Data = new Dictionary<string, string>();
-		Providers = new List<ILugusConfigProvider>();
+		_name = name;
+		_data = new Dictionary<string, string>();
+		_providers = new List<ILugusConfigProvider>();
 		_changed = false;
 		LugusConfigProviderDefault provider = new LugusConfigProviderDefault(path);
 		Providers.Add(provider);
@@ -101,9 +123,9 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 	// Add the provider and load the profile from file.
 	public LugusConfigProfileDefault(string name, ILugusConfigProvider provider)
 	{
-		_profileName = name;
-		Data = new Dictionary<string, string>();
-		Providers = new List<ILugusConfigProvider>();
+		_name = name;
+		_data = new Dictionary<string, string>();
+		_providers = new List<ILugusConfigProvider>();
 		_changed = false;
 
 		Providers.Add(provider);
@@ -114,11 +136,11 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 	// Add a list of providers to load the profile data from.
 	public LugusConfigProfileDefault(string name, List<ILugusConfigProvider> providers)
 	{
-		_profileName = name;
-		Data = new Dictionary<string, string>();
+		_name = name;
+		_data = new Dictionary<string, string>();
 		_changed = false;
 
-		this.Providers = providers;
+		_providers = providers;
 		Load();
 	}
 
@@ -137,7 +159,7 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 
 			// Add the data from the provider to the profile
 			for (int i = 0; i < providerData.Count; ++i)
-				Data.Add(keys[i], values[i]);
+				_data.Add(keys[i], values[i]);
 		}
 	}
 
@@ -146,7 +168,7 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		if (!_changed)
 			return;
 
-		foreach (ILugusConfigProvider provider in Providers)
+		foreach (ILugusConfigProvider provider in _providers)
 			provider.Store(Data, Name);
 
 		_changed = false;
@@ -154,13 +176,13 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 
 	public bool Exists(string key)
 	{
-		return Data.ContainsKey(key);
+		return _data.ContainsKey(key);
 	}
 
 	public void Remove(string key)
 	{
-		if (Data.ContainsKey(key))
-			Data.Remove(key);
+		if (_data.ContainsKey(key))
+			_data.Remove(key);
 	}
 
 	#region Getters
@@ -191,21 +213,21 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 
 	public T Get<T>(string key, T defaultValue)
 	{
-		if (Data.ContainsKey(key))
+		if (_data.ContainsKey(key))
 		{
 			// Check for known types with built-in parsing
 			if (typeof(T) == typeof(bool))
-				return (T)(object)StringToBool(Data[key], (bool)(object)defaultValue);
+				return (T)(object)StringToBool(_data[key], (bool)(object)defaultValue);
 			else if (typeof(T) == typeof(int))
-				return (T)(object)int.Parse(Data[key]);
+				return (T)(object)int.Parse(_data[key]);
 			else if (typeof(T) == typeof(float))
-				return (T)(object)float.Parse(Data[key]);
+				return (T)(object)float.Parse(_data[key]);
 			else if (typeof(T) == typeof(double))
-				return (T)(object)double.Parse(Data[key]);
+				return (T)(object)double.Parse(_data[key]);
 			else if (typeof(T) == typeof(string))
-				return (T)(object)Data[key];
+				return (T)(object)_data[key];
 			else
-				return (T)(object)Data[key];
+				return (T)(object)_data[key];
 
 		}
 		else
@@ -243,17 +265,17 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 	public void Set<T>(string key, T value, bool overwrite = true)
 	{
 
-		if (Data.ContainsKey(key))
+		if (_data.ContainsKey(key))
 		{
 			if (overwrite)
 			{
-				Data[key] = value.ToString();
+				_data[key] = value.ToString();
 				_changed = true;
 			}
 		}
 		else
 		{
-			Data.Add(key, value.ToString());
+			_data.Add(key, value.ToString());
 			_changed = true;
 		}
 	}

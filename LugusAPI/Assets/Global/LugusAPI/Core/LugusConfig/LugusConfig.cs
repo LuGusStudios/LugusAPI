@@ -46,7 +46,6 @@ public class LugusConfigDefault : MonoBehaviour
 		}
 	}
 
-
 	private ILugusConfigProfile _systemProfile = null;	// Profile holding system variables, i.e. graphics and sound options.
 	private ILugusConfigProfile _currentUser = null;	// Profile holding user specific variables, i.e. character health and strength.
 	private List<ILugusConfigProfile> _profiles = null;	// All profiles registered in this configuration, incl. system profile.

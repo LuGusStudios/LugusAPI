@@ -22,43 +22,55 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 	{
 		get
 		{
-			return _URL;
+			return _url;
 		}
 		set
 		{
-			_URL = value;
+			_url = value;
 		}
 	}
-	private List<ILugusConfigDataHelper> parsers = null;
+	public List<ILugusConfigDataHelper> Parsers
+	{
+		get
+		{
+			return _parsers;
+		}
+		set
+		{
+			_parsers = value;
+		}
+	}
 
 	[SerializeField]
-	private string _URL = "";
+	private string _url = "";
+
+	private List<ILugusConfigDataHelper> _parsers = null;
 	#endregion
 
 	// Adds an XML parser as standard parser.
 	public LugusConfigProviderDefault(string url)
 	{
-		_URL = url;
+		_url = url;
 
-		parsers = new List<ILugusConfigDataHelper>();
-		parsers.Add(new LugusConfigDataHelperXML());
+		_parsers = new List<ILugusConfigDataHelper>();
+		_parsers.Add(new LugusConfigDataHelperXML());
 
 	}
 
 	// Use the given parser to parse data loaded by the provider.
 	public LugusConfigProviderDefault(string url, ILugusConfigDataHelper parser)
 	{
-		_URL = url;
-		parsers = new List<ILugusConfigDataHelper>();
-		parsers.Add(parser);
+		_url = url;
+		_parsers = new List<ILugusConfigDataHelper>();
+		_parsers.Add(parser);
 
 	}
 
 	// Use the given list of parsers to parse data loaded by the provider.
 	public LugusConfigProviderDefault(string url, List<ILugusConfigDataHelper> parsers)
 	{
-		_URL = url;
-		this.parsers = parsers;
+		_url = url;
+		_parsers = parsers;
 	}
 
 	public Dictionary<string, string> Load(string key)
@@ -71,7 +83,7 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 
 		Dictionary<string, string> data = new Dictionary<string, string>();
 
-		foreach (ILugusConfigDataHelper parser in parsers)
+		foreach (ILugusConfigDataHelper parser in _parsers)
 		{
 			
 			string fullpath = URL + key + parser.FileExtension;
@@ -93,7 +105,7 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 
 	public void Store(Dictionary<string, string> data, string key)
 	{
-		foreach (ILugusConfigDataHelper parser in parsers)
+		foreach (ILugusConfigDataHelper parser in _parsers)
 		{
 			string rawData = parser.ParseTo(data);
 
