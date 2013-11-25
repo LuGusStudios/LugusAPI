@@ -26,8 +26,6 @@ public interface ILugusConfigProfile
 
 	float GetFloat(string key, float defaultValue);
 
-	double GetDouble(string key, double defaultValue);
-
 	string GetString(string key, string defaultValue);
 
 	T Get<T>(string key, T defaultValue);
@@ -39,8 +37,6 @@ public interface ILugusConfigProfile
 	void SetInt(string key, int value, bool overwrite);
 
 	void SetFloat(string key, float value, bool overwrite);
-
-	void SetDouble(string key, double value, bool overwrite);
 
 	void SetString(string key, string value, bool overwrite);
 
@@ -87,11 +83,11 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 	}
 
 	[SerializeField]
-	private string _name = "";
-	private Dictionary<string, string> _data = null;
-	private List<ILugusConfigProvider> _providers = null;
+	protected string _name = "";
+	protected Dictionary<string, string> _data = null;
+	protected List<ILugusConfigProvider> _providers = null;
 
-	private bool _changed = false;	// True if the data has changed by using one of the setter methods. Used to save time if no changes have been made to the profile.
+	protected bool _changed = false;	// True if the data has changed by using one of the setter methods. Used to save time if no changes have been made to the profile.
 	#endregion
 
 	// Add a default provider pointing at the config folder. Doesn't load a profile from file.
@@ -201,11 +197,6 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		return Get<float>(key, defaultValue);
 	}
 
-	public double GetDouble(string key, double defaultValue = 0.0)
-	{
-		return Get<double>(key, defaultValue);
-	}
-
 	public string GetString(string key, string defaultValue = "")
 	{
 		return Get<string>(key, defaultValue);
@@ -250,11 +241,6 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 	public void SetFloat(string key, float value, bool overwrite = true)
 	{
 		Set<float>(key, value, overwrite);
-	}
-
-	public void SetDouble(string key, double value, bool overwrite = true)
-	{
-		Set<double>(key, value, overwrite);
 	}
 
 	public void SetString(string key, string value, bool overwrite = true)

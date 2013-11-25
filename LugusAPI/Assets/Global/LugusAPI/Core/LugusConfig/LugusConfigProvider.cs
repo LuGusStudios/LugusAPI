@@ -42,9 +42,9 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 	}
 
 	[SerializeField]
-	private string _url = "";
+	protected string _url = "";
 
-	private List<ILugusConfigDataHelper> _parsers = null;
+	protected List<ILugusConfigDataHelper> _parsers = null;
 	#endregion
 
 	// Adds an XML parser as standard parser.
