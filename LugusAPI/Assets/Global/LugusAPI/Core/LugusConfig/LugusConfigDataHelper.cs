@@ -31,7 +31,7 @@ public class LugusConfigDataHelperXML : ILugusConfigDataHelper
 	}
 
 	[SerializeField]
-	private string _fileExtension = ".xml";
+	protected string _fileExtension = ".xml";
 	#endregion
 
 	// Parse flat xml data of the form: <key>value</key>
@@ -94,7 +94,7 @@ public class LugusConfigDataHelperJSON : ILugusConfigDataHelper
 	}
 
 	[SerializeField]
-	private string _fileExtension = ".json";
+	protected string _fileExtension = ".json";
 	#endregion
 
 	public Dictionary<string, string> ParseFrom(string rawdata)

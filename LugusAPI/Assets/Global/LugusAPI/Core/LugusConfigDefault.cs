@@ -1,9 +1,10 @@
+/*
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
 
-/*
+/ *
  * TODO:
  * 
 - meerdere user profiles!!!
@@ -11,7 +12,7 @@ using System;
 - schrijven naar xml file ipv playerprefs (#config files)
 - list all keys
  * 
- */ 
+ * / 
 
 public class LugusConfig : LugusSingletonRuntime<LugusConfigDefault>
 {
@@ -172,3 +173,4 @@ public class LugusConfigDefault : MonoBehaviour
 		StoreAllInPlayerPrefs(); 
 	}
 }
+*/
