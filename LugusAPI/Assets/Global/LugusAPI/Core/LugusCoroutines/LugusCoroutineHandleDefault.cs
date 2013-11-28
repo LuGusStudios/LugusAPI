@@ -7,7 +7,8 @@ public interface ILugusCoroutineHandle
 	bool Running { get; set; }
 	bool Claimed { get; set; }
 	
-	void StartRoutine( IEnumerator routine ); 
+	//void StartRoutine( IEnumerator routine ); 
+	Coroutine StartRoutine( IEnumerator routine );
 	void StartRoutineDelayed( IEnumerator routine, float delay );
 	
 	void StopRoutine();
@@ -42,7 +43,7 @@ public class LugusCoroutineHandleDefault : MonoBehaviour, ILugusCoroutineHandle
 		set{}
 	}
 	
-	
+	/*
 	public void StartRoutine( IEnumerator subject )
 	{
 		if( subject == null ) 
@@ -64,6 +65,31 @@ public class LugusCoroutineHandleDefault : MonoBehaviour, ILugusCoroutineHandle
 		
 		this.StartCoroutine( RoutineRunner(subject) );
 	}
+	*/
+
+	
+	public Coroutine StartRoutine( IEnumerator subject )
+	{
+		if( subject == null ) 
+		{
+			Debug.LogError("LugusCoroutineHandle : method for coroutine was null!");
+			return null;	
+		}
+		
+		// TODO: check if _helper.Running is still false
+		// if not: get a new Helper (from the Singleton maybe?) and start it on that?
+		// as long as this is not fixed, and 2 routines are running on the same helper, Stop() will stop both routines!
+		// Note though: this might be expected behaviour... ex. launching multiple routines that belong together on 1 handle...
+		// possibly handle that with a flag? or even separate Singleton interface? (ex. GetHandle vs GetGroupHandle)
+		
+		if( this.Running && !_claimed )
+		{
+			Debug.LogWarning("LugusCoroutineHandle : there was already a routine running on this un-claimed Handle! Starting new one anyway...");
+		}
+		
+		return this.StartCoroutine( RoutineRunner(subject) );
+	}
+
 	
 	public void StartRoutineDelayed( IEnumerator subject, float delay )
 	{
