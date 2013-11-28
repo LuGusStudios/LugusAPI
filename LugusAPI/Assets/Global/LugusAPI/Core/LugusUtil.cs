@@ -58,7 +58,7 @@ public class LugusUtil
 	public static Vector3 DEFAULTVECTOR = new Vector3( float.MaxValue, float.MaxValue, float.MaxValue ); 
 }
 
-public static class Vector3Extensions
+public static class VectorExtensions
 {
 	// ex. vec = vec.y( value );
 	public static Vector3 y(this Vector3 v, float val)
@@ -74,6 +74,16 @@ public static class Vector3Extensions
 	public static Vector3 z(this Vector3 v, float val)
 	{
 		return new Vector3(v.x, v.y, val);
+	}
+
+	public static Vector2 v2(this Vector3 v)
+	{
+		return new Vector2(v.x, v.y);
+	}
+
+	public static Vector3 v3(this Vector2 v)
+	{
+		return new Vector3(v.x, v.y, 0);
 	}
 	
 	// ex. vec = vec.yAdd( -5.0f )
