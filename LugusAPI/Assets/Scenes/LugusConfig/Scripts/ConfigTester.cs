@@ -9,16 +9,14 @@ public class ConfigTester : MonoBehaviour
 	public int BoxMargin = 10;	// Horizontal margin between each box
 	public int BoxWidth = 200;	// Width of each box in pixels
 
-	public int RandomSeed = 1;
+	protected LugusConfigDefault _config = null;
+	protected string _newProfileName = "Enter a name";
 
-	private LugusConfigDefault _config = null;
-	private string _newProfileName = "Enter a name";
-
-	private int _profileEditMode = 0;
-	private string _profileKeyString = "Key";
-	private string _profileStringValue = "Value";
-	private float _profilenumericalValue = 0.0f;
-	private bool _profileOverwrite = true;
+	protected int _profileEditMode = 0;
+	protected string _profileKeyString = "Key";
+	protected string _profileStringValue = "Value";
+	protected float _profilenumericalValue = 0.0f;
+	protected bool _profileOverwrite = true;
 	#endregion
 
 	// Use this for initialization
@@ -73,17 +71,31 @@ public class ConfigTester : MonoBehaviour
 			yPos += 20;
 		}
 
-		// Add a profile-box
+		AddOrEditProfileBox(xPos, yPos);
+
+	}
+
+	void AddOrEditProfileBox(int xPos, int yPos)
+	{
+		// Add or edit profile-box
 		yPos += 20;
-		GUI.Box(new Rect(xPos, yPos, BoxWidth, 60), "Add Profile");
+		GUI.Box(new Rect(xPos, yPos, BoxWidth, 60), "Add or edit profile");
 
 		yPos += 20;
 		_newProfileName = GUI.TextField(new Rect(xPos, yPos, BoxWidth, 20), _newProfileName);
 
 		yPos += 20;
-		if (GUI.Button(new Rect(xPos, yPos, BoxWidth, 20), "Add Profile"))
+		if (GUI.Button(new Rect(xPos, yPos, BoxWidth / 2, 20), "Add Profile"))
 			_config.AllProfiles.Add(new LugusConfigProfileDefault(_newProfileName));
 
+		if ((GUI.Button(new Rect(xPos + BoxWidth / 2, yPos, BoxWidth / 2, 20), "Edit Profile") && (_config.User != null)))
+			_config.User.Name = _newProfileName;
+
+		LoadAndStoreProfilesBox(xPos, yPos);
+	}
+
+	void LoadAndStoreProfilesBox(int xPos, int yPos)
+	{
 		// Save and load-box
 		yPos += 40;
 		GUI.Box(new Rect(xPos, yPos, BoxWidth, 60), "Load and Store");
@@ -97,7 +109,6 @@ public class ConfigTester : MonoBehaviour
 		yPos += 20;
 		if (GUI.Button(new Rect(xPos, yPos, BoxWidth, 20), "Store profiles"))
 			_config.SaveProfiles();
-
 	}
 
 	// Draws the layout of the system profile
@@ -132,59 +143,67 @@ public class ConfigTester : MonoBehaviour
 				yPos += 20;
 			}
 
-			// Draw the actions for the profile
-			yPos += 20;
-			GUI.Box(new Rect(xPos, yPos, BoxWidth, 120), "Edit profile");
-
-			yPos += 20;
-			string[] editModeStrings = {"String", "Numerical"};
-			_profileEditMode = GUI.Toolbar(new Rect(xPos, yPos, BoxWidth, 20), _profileEditMode, editModeStrings);
-
-			yPos += 20;
-			_profileKeyString = GUI.TextField(new Rect(xPos, yPos, BoxWidth, 20), _profileKeyString);
-
-			// Either allow a string value-field, or a numerical one
-			switch (_profileEditMode)
-			{
-				case 0:
-					yPos += 20;
-					_profileStringValue = GUI.TextField(new Rect(xPos, yPos, BoxWidth, 20), _profileStringValue);
-					break;
-				case 1:
-					yPos += 20;
-					_profilenumericalValue = GUI.HorizontalSlider(new Rect(xPos, yPos, BoxWidth / 2, 20), _profilenumericalValue, 0.0f, 100.0f);
-					GUI.Label(new Rect(xPos + BoxWidth / 2 + 20, yPos, BoxWidth / 2, 20), _profilenumericalValue.ToString());
-					break;
-			}
-
-			yPos += 20;
-			_profileOverwrite = GUI.Toggle(new Rect(xPos, yPos, BoxWidth, 20), _profileOverwrite, "Overwrite?");
-
-			yPos += 20;
-			if (GUI.Button(new Rect(xPos, yPos, BoxWidth / 2, 20), "Add"))
-			{
-				switch (_profileEditMode)
-				{
-					case 0:
-						profile.SetString(_profileKeyString, _profileStringValue, _profileOverwrite);
-						break;
-					case 1:
-						profile.SetFloat(_profileKeyString, _profilenumericalValue, _profileOverwrite);
-						break;
-				}
-			}
-
-			if (GUI.Button(new Rect(xPos + BoxWidth / 2, yPos, BoxWidth / 2, 20), "Remove"))
-				profile.Remove(_profileKeyString);
+			GUIEditProfileBox(xPos, yPos, profile);
 		}
 
 	}
 
+	void GUIEditProfileBox(int xPos, int yPos, ILugusConfigProfile profile)
+	{
+		// Draw the actions for the profile
+		yPos += 20;
+		GUI.Box(new Rect(xPos, yPos, BoxWidth, 120), "Edit profile");
+
+		yPos += 20;
+		string[] editModeStrings = { "String", "Numerical" };
+		_profileEditMode = GUI.Toolbar(new Rect(xPos, yPos, BoxWidth, 20), _profileEditMode, editModeStrings);
+
+		yPos += 20;
+		_profileKeyString = GUI.TextField(new Rect(xPos, yPos, BoxWidth, 20), _profileKeyString);
+
+		// Either allow a string value-field, or a numerical one
+		switch (_profileEditMode)
+		{
+			case 0:
+				yPos += 20;
+				_profileStringValue = GUI.TextField(new Rect(xPos, yPos, BoxWidth, 20), _profileStringValue);
+				break;
+			case 1:
+				yPos += 20;
+				_profilenumericalValue = GUI.HorizontalSlider(new Rect(xPos, yPos, BoxWidth / 2, 20), _profilenumericalValue, 0.0f, 100.0f);
+				GUI.Label(new Rect(xPos + BoxWidth / 2 + 20, yPos, BoxWidth / 2, 20), _profilenumericalValue.ToString());
+				break;
+		}
+
+		yPos += 20;
+		_profileOverwrite = GUI.Toggle(new Rect(xPos, yPos, BoxWidth, 20), _profileOverwrite, "Overwrite?");
+
+		yPos += 20;
+		if (GUI.Button(new Rect(xPos, yPos, BoxWidth / 2, 20), "Add"))
+		{
+			switch (_profileEditMode)
+			{
+				case 0:
+					profile.SetString(_profileKeyString, _profileStringValue, _profileOverwrite);
+					break;
+				case 1:
+					profile.SetFloat(_profileKeyString, _profilenumericalValue, _profileOverwrite);
+					break;
+			}
+		}
+
+		if (GUI.Button(new Rect(xPos + BoxWidth / 2, yPos, BoxWidth / 2, 20), "Remove"))
+			profile.Remove(_profileKeyString);
+	}
+
+	// Tests values in the profile by inserting and extracting
+	// random values and comparing them. Will output a debug
+	// error message when two values are not considered equal.
 	bool TestRandomValues()
 	{
 
 		bool testResult = true;
-		Random.seed = RandomSeed;
+		Random.seed = (int)Time.time;
 
 		// A series of random test to put and pull values from a profile
 		LugusConfigProfileDefault profile = new LugusConfigProfileDefault("Test");
@@ -227,25 +246,10 @@ public class ConfigTester : MonoBehaviour
 			key = "floatValue" + i;
 			profile.SetFloat(key, insertFloat);
 			float extractFloat = profile.GetFloat(key, -1.0f);
-			if (insertFloat - extractFloat != 0.0f)
+			if (!Mathf.Approximately(insertFloat, extractFloat))
 			{
 				testResult = false;
-				Debug.Log(insertFloat);
-				Debug.Log(extractFloat);
 				Debug.LogError("Extracted float value did not match the inserted value. Inserted: " + insertFloat + " Extracted: " + extractFloat);
-			}
-
-			// test doubles
-			double insertDouble = Random.Range(0.0f, 100.0f);
-			key = "doubleValue" + i;
-			profile.SetDouble(key, insertDouble);
-			double extractDouble = profile.GetDouble(key, -1.0f);
-			if (insertDouble != extractDouble)
-			{
-				testResult = false;
-				Debug.Log(insertDouble);
-				Debug.Log(extractDouble);
-				Debug.LogError("Extracted double value did not match the inserted value. Inserted: " + insertDouble + " Extracted: " + extractDouble);
 			}
 		}
 

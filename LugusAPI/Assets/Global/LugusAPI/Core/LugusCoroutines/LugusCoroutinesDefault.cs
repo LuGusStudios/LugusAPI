@@ -63,7 +63,7 @@ public class LugusCoroutinesDefault
 		ILugusCoroutineHandle handle = handleGO.AddComponent<LugusCoroutineHandleDefault>();
 		
 		handleGO.transform.parent = handleHelperParent;
-
+		 
 		return handle;
 	}
 	
