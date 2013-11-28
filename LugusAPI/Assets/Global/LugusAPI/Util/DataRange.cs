@@ -75,5 +75,10 @@ public class DataRange
 		
 		return output;
 	}
+
+	public float Random()
+	{
+		return ValueFromPercentage( UnityEngine.Random.value );
+	}
 	
 }
