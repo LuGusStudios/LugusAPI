@@ -54,6 +54,7 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 
 		_parsers = new List<ILugusConfigDataHelper>();
 		_parsers.Add(new LugusConfigDataHelperXML());
+		//_parsers.Add(new LugusConfigDataHelperJSON());
 
 	}
 
@@ -75,31 +76,31 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 
 	public Dictionary<string, string> Load(string key)
 	{
-
 		// Find config files that can be parsed by the parsers in the list.
 		// Data parsed by multiple parsers will be merged.
-		// Data with the same key value from different parsers will result in the value of the parser that parsed the key last.
-		// So the order in which the parsers are used is important!
+		// Data with the same key from different parsers will result in the value of the parser that parsed the key last.
+		// So the order in which the parsers are added is important!
 
 		Dictionary<string, string> data = new Dictionary<string, string>();
 
 		foreach (ILugusConfigDataHelper parser in _parsers)
 		{
-			
 			string fullpath = URL + key + parser.FileExtension;
 
 			// Read the raw data out of the file
-			StreamReader reader = new StreamReader(fullpath, Encoding.Default);
-			string rawdata = reader.ReadToEnd();
-			reader.Close();
+			if (File.Exists(fullpath))
+			{
+				StreamReader reader = new StreamReader(fullpath, Encoding.Default);
+				string rawdata = reader.ReadToEnd();
+				reader.Close();
 
-			Dictionary<string, string> partialData = parser.ParseFrom(rawdata);
+				Dictionary<string, string> partialData = parser.ParseFrom(rawdata);
 
-			// Merge with main data
-			foreach (KeyValuePair<string, string> entry in partialData)
-				data.Add(entry.Key, entry.Value);
+				// Merge with data and resolve duplicate keys
+				foreach (KeyValuePair<string, string> entry in partialData)
+					data.Add(entry.Key, entry.Value);
+			}
 		}
-
 		return data;
 	}
 
