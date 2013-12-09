@@ -87,6 +87,9 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 		{
 			string fullpath = URL + key + parser.FileExtension;
 
+			if (!Directory.Exists(URL))
+				return data;
+
 			// Read the raw data out of the file
 			if (File.Exists(fullpath))
 			{
@@ -106,6 +109,9 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 
 	public void Store(Dictionary<string, string> data, string key)
 	{
+		if (!Directory.Exists(URL))
+			return;
+
 		foreach (ILugusConfigDataHelper parser in _parsers)
 		{
 			string rawData = parser.ParseTo(data);

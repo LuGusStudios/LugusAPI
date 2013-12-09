@@ -78,7 +78,7 @@ public class LugusConfigDataHelperXML : ILugusConfigDataHelper
 			rawdata += "\t<" + key + ">" + value + "</" + key + ">\r\n";
 		}
 
-		rawdata += "<Config>\r\n";
+		rawdata += "</Config>\r\n";
 		return rawdata;
 	}
 }

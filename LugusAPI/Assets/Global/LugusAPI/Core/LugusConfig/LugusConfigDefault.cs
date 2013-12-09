@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class LugusConfig : LugusSingletonExisting<LugusConfigDefault>
 {
-
+	
 }
 
 public class LugusConfigDefault : MonoBehaviour
@@ -45,10 +45,12 @@ public class LugusConfigDefault : MonoBehaviour
 			_profiles = value;
 		}
 	}
+	#endregion
 
+	#region Protected
 	protected ILugusConfigProfile _systemProfile = null;	// Profile holding system variables, i.e. graphics and sound options.
-	protected ILugusConfigProfile _currentUser = null;	// Profile holding user specific variables, i.e. character health and strength.
-	protected List<ILugusConfigProfile> _profiles = null;	// All profiles registered in this configuration, incl. system profile.
+	protected ILugusConfigProfile _currentUser = null;		// Profile holding user specific variables, i.e. character health and strength.
+	protected List<ILugusConfigProfile> _profiles = new List<ILugusConfigProfile>();	// All profiles registered in this configuration, incl. system profile.
 	#endregion
 
 	// Reload all profiles found in the Config folder.
