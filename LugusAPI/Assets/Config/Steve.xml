@@ -1,6 +1,9 @@
-<character>StevyZ0R</character>
-<health>97</health>
-<mana>101</mana>
-<strength>80</strength>
-<defense>46</defense>
-<poisoned>True</poisoned>
+<?xml version="1.0" encoding="UTF-8" ?>
+<Config>
+	<character>StevyZ0R</character>
+	<health>97</health>
+	<mana>101</mana>
+	<strength>80</strength>
+	<defense>46</defense>
+	<poisoned>True</poisoned>
+<Config>

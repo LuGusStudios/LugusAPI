@@ -35,46 +35,52 @@ public class LugusConfigDataHelperXML : ILugusConfigDataHelper
 	#endregion
 
 	// Parse flat xml data of the form: <key>value</key>
+	// The data is considered to be found at depth level 1 (the root and header are found on depth level 0).
 	public Dictionary<string, string> ParseFrom(string rawdata)
 	{
-
 		Dictionary<string, string> data = new Dictionary<string, string>();
 
 		TinyXmlReader xmlreader = new TinyXmlReader(rawdata);
+
+		int depth = -1;
 
 		// While still reading valid data
 		while (xmlreader.Read())
 		{
 
-			// Read the contents of the element only when an opening tag is found
-			if (xmlreader.isOpeningTag)
+			if (xmlreader.tagType == TinyXmlReader.TagType.OPENING)
+				++depth;
+			else if (xmlreader.tagType == TinyXmlReader.TagType.CLOSING)
+				--depth;
+
+			// Useful data is found at depth level 1
+			if ((depth == 1) && (xmlreader.tagType == TinyXmlReader.TagType.OPENING))
 				data.Add(xmlreader.tagName, xmlreader.content);
-
 		}
-
 		return data;
-
 	}
 
 	public string ParseTo(Dictionary<string, string> data)
 	{
-
 		if (data == null)
 			return string.Empty;
 
 		List<string> keys = data.Keys.ToList();
 		List<string> values = data.Values.ToList();
+
 		string rawdata = string.Empty;
+		rawdata += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n";
+		rawdata += "<Config>\r\n";
 
 		for (int i = 0; i < data.Count; ++i)
 		{
 			string key = keys[i], value = values[i];
-			rawdata += "<" + key + ">" + value + "</" + key + ">\n";
+			rawdata += "\t<" + key + ">" + value + "</" + key + ">\r\n";
 		}
 
+		rawdata += "</Config>\r\n";
 		return rawdata;
 	}
-
 }
 
 public class LugusConfigDataHelperJSON : ILugusConfigDataHelper
@@ -99,8 +105,8 @@ public class LugusConfigDataHelperJSON : ILugusConfigDataHelper
 
 	public Dictionary<string, string> ParseFrom(string rawdata)
 	{
-
-		Dictionary<string, string> data = new Dictionary<string, string>();
+		JSONObject jsonObj = new JSONObject(rawdata);
+		Dictionary<string, string> data = jsonObj.ToDictionary();
 
 		return data;
 	}
@@ -108,6 +114,9 @@ public class LugusConfigDataHelperJSON : ILugusConfigDataHelper
 	public string ParseTo(Dictionary<string, string> data)
 	{
 		string rawdata = string.Empty;
+
+		JSONObject jsonObj = new JSONObject(data);
+		rawdata = jsonObj.ToString();
 
 		return rawdata;
 	}

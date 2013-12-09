@@ -3,7 +3,8 @@ using System.Collections;
 
 /* 
 	Source: http://wiki.unity3d.com/index.php?title=TinyXmlReader 
-	See site for usage. 	
+	See site for usage.
+	Extended to handle comments and headers.
 */
 
 public class TinyXmlReader
@@ -16,8 +17,10 @@ public class TinyXmlReader
 		xmlString = newXmlString;
 	}
 
+	public enum TagType { OPENING = 0, CLOSING = 1, COMMENT = 2, HEADER = 3 };
+
 	public string tagName = "";
-	public bool isOpeningTag = false;
+	public TagType tagType = TagType.OPENING;
 	public string content = "";
 
 
@@ -47,45 +50,67 @@ public class TinyXmlReader
 		}
 		++idx;
 
-		// skip attributes, don't include them in the name!
 		int endOfTag = IndexOf('>', idx);
+		if (endOfTag == -1)
+			return false;
+
+		// All contents of the tag, incl. name and attributes
+		string tagContents = xmlString.Substring(idx, endOfTag - idx);
+
 		int endOfName = IndexOf(' ', idx);
 		if ((endOfName == -1) || (endOfTag < endOfName))
-		{
 			endOfName = endOfTag;
-		}
-
-		if (endOfTag == -1)
-		{
-			return false;
-		}
 
 		tagName = xmlString.Substring(idx, endOfName - idx);
 
 		idx = endOfTag;
 
-		// check if a closing tag
+		// Fill in the tag name
 		if (tagName.StartsWith("/"))
 		{
-			isOpeningTag = false;
-			tagName = tagName.Remove(0, 1); // remove the slash
+			tagType = TagType.CLOSING;
+			tagName = tagName.Remove(0, 1);	// Remove the "/" at the front
+		}
+		else if (tagName.StartsWith("?"))
+		{
+			tagType = TagType.HEADER;
+			tagName = tagName.Remove(0, 1);	// Remove the "?" at the front
+		}
+		else if(tagName.StartsWith("!--"))
+		{
+			tagType = TagType.COMMENT;
+			tagName = string.Empty;	// A comment doesn't have a tag name
 		}
 		else
 		{
-			isOpeningTag = true;
+			tagType = TagType.OPENING;
 		}
 
-		// if an opening tag, get the content
-		if (isOpeningTag)
+		// Set the contents of the tag with respect to the type of the tag
+		switch (tagType)
 		{
-			int startOfCloseTag = xmlString.IndexOf("<", idx);
-			if (startOfCloseTag == -1)
-			{
-				return false;
-			}
+			case TagType.OPENING:
+				int startOfCloseTag = xmlString.IndexOf("<", idx);
+				if (startOfCloseTag == -1)
+					return false;
 
-			content = xmlString.Substring(idx + 1, startOfCloseTag - idx - 1);
-			content = content.Trim();
+				content = xmlString.Substring(idx + 1, startOfCloseTag - idx - 1).Trim();
+				break;
+			case TagType.COMMENT:
+				if ((tagContents.Length - 5) < 0)
+					return false;
+
+				content = tagContents.Substring(3, tagContents.Length - 5).Trim();
+				break;
+			case TagType.HEADER:
+				if ((tagContents.Length - 1) < 0)
+					return false;
+
+				content = tagContents.Substring(tagName.Length + 1, tagContents.Length - tagName.Length - 2).Trim();
+				break;
+			default:
+				content = string.Empty;
+				break;
 		}
 
 		return true;
@@ -95,7 +120,7 @@ public class TinyXmlReader
 	public bool Read(string endingTag)
 	{
 		bool retVal = Read();
-		if (tagName == endingTag && !isOpeningTag)
+		if ((tagName == endingTag) && (tagType == TagType.CLOSING))
 		{
 			retVal = false;
 		}

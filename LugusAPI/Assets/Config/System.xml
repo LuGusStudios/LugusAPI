@@ -1,5 +1,8 @@
-<musicvolume>75</musicvolume>
-<controllervibration>0</controllervibration>
-<Language>EN</Language>
-<User.Latest>Rick</User.Latest>
-<graphicsquality>High</graphicsquality>
+<?xml version="1.0" encoding="UTF-8" ?>
+<Config>
+	<musicvolume>75</musicvolume>
+	<controllervibration>0</controllervibration>
+	<Language>EN</Language>
+	<User.Latest>Rick</User.Latest>
+	<graphicsquality>High</graphicsquality>
+<Config>

@@ -8,7 +8,6 @@ using System.Collections.Generic;
 // The ILugusConfigProfile saves the properties of a user or a set of system variables
 public interface ILugusConfigProfile
 {
-
 	string Name { get; set; }
 
 	void Load();
@@ -98,25 +97,21 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		_providers = new List<ILugusConfigProvider>();
 		_changed = true;
 
-		LugusConfigProviderDefault provider = new LugusConfigProviderDefault(Application.dataPath + "/Config/");
-		Providers.Add(provider);
+		Providers.Add(new LugusConfigProviderDefault(Application.dataPath + "/Config/"));
 	}
 
-	// Add a default provider pointing at a folder, and loads the profile
-	// from the file %path%/Config/%name%.xml or %path%/Config/%name%.json.
+	// Add a default provider pointing at a folder specified in path.
 	public LugusConfigProfileDefault(string name, string path)
 	{
 		_name = name;
 		_data = new Dictionary<string, string>();
 		_providers = new List<ILugusConfigProvider>();
 		_changed = false;
-		LugusConfigProviderDefault provider = new LugusConfigProviderDefault(path);
-		Providers.Add(provider);
-
-		Load();
+		
+		Providers.Add(new LugusConfigProviderDefault(path));
 	}
 
-	// Add the provider and load the profile from file.
+	// Add a predefined provider for this profile instead of a default one.
 	public LugusConfigProfileDefault(string name, ILugusConfigProvider provider)
 	{
 		_name = name;
@@ -125,11 +120,9 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		_changed = false;
 
 		Providers.Add(provider);
-		Load();
-
 	}
 
-	// Add a list of providers to load the profile data from.
+	// Add a predefined list of providers for this profile.
 	public LugusConfigProfileDefault(string name, List<ILugusConfigProvider> providers)
 	{
 		_name = name;
@@ -137,7 +130,6 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		_changed = false;
 
 		_providers = providers;
-		Load();
 	}
 
 	public void Load()
@@ -155,7 +147,12 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 
 			// Add the data from the provider to the profile
 			for (int i = 0; i < providerData.Count; ++i)
-				_data.Add(keys[i], values[i]);
+			{
+				if (_data.ContainsKey(keys[i]))
+					_data[keys[i]] = values[i];
+				else
+					_data.Add(keys[i], values[i]);
+			}
 		}
 	}
 
@@ -213,13 +210,24 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 				return (T)(object)int.Parse(_data[key]);
 			else if (typeof(T) == typeof(float))
 				return (T)(object)float.Parse(_data[key]);
-			else if (typeof(T) == typeof(double))
-				return (T)(object)double.Parse(_data[key]);
 			else if (typeof(T) == typeof(string))
 				return (T)(object)_data[key];
 			else
 				return (T)(object)_data[key];
 
+		}
+		else if (PlayerPrefs.HasKey(key))
+		{
+			if (typeof(T) == typeof(bool))
+				return (T)(object)StringToBool(PlayerPrefs.GetString(key), (bool)(object)defaultValue);
+			else if (typeof(T) == typeof(int))
+				return (T)(object)PlayerPrefs.GetInt(key);
+			else if (typeof(T) == typeof(float))
+				return (T)(object)PlayerPrefs.GetFloat(key);
+			else if (typeof(T) == typeof(string))
+				return (T)(object)PlayerPrefs.GetString(key);
+			else
+				return (T)(object)PlayerPrefs.GetString(key);
 		}
 		else
 			return defaultValue;
