@@ -56,6 +56,7 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		set
 		{
 			_name = value;
+			_changed = true;
 		}
 	}
 	public Dictionary<string, string> Data
@@ -67,6 +68,7 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		set
 		{
 			_data = value;
+			_changed = true;
 		}
 	}
 	public List<ILugusConfigProvider> Providers
@@ -78,6 +80,7 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		set
 		{
 			_providers = value;
+			_changed = true;
 		}
 	}
 

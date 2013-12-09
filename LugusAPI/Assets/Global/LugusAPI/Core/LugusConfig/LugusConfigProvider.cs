@@ -55,7 +55,6 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 		_parsers = new List<ILugusConfigDataHelper>();
 		_parsers.Add(new LugusConfigDataHelperXML());
 		//_parsers.Add(new LugusConfigDataHelperJSON());
-
 	}
 
 	// Use the given parser to parse data loaded by the provider.
@@ -110,7 +109,16 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 	public void Store(Dictionary<string, string> data, string key)
 	{
 		if (!Directory.Exists(URL))
-			return;
+		{
+			try
+			{
+				Directory.CreateDirectory(URL);
+			}
+			catch (System.Exception)
+			{
+				return;
+			}
+		}
 
 		foreach (ILugusConfigDataHelper parser in _parsers)
 		{

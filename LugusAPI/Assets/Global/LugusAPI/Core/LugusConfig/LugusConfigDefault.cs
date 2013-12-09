@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 
-public class LugusConfig : LugusSingletonExisting<LugusConfigDefault>
+public class LugusConfig : LugusSingletonRuntime<LugusConfigDefault>
 {
 	
 }
@@ -11,11 +11,13 @@ public class LugusConfig : LugusSingletonExisting<LugusConfigDefault>
 public class LugusConfigDefault : MonoBehaviour
 {
 	#region Properties
-
 	public ILugusConfigProfile User
 	{
 		get
 		{
+			if (_currentUser == null)
+				ReloadDefaultProfiles();
+
 			return _currentUser;
 		}
 		set
@@ -27,6 +29,9 @@ public class LugusConfigDefault : MonoBehaviour
 	{
 		get
 		{
+			if (_systemProfile == null)
+				ReloadDefaultProfiles();
+
 			return _systemProfile;
 		}
 		set
