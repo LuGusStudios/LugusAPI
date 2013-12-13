@@ -17,7 +17,7 @@ public class TinyXmlReader
 		xmlString = newXmlString;
 	}
 
-	public enum TagType { OPENING = 0, CLOSING = 1, COMMENT = 2, HEADER = 3 };
+	public enum TagType { OPENING = 0, CLOSING = 1, COMMENT = 2, HEADER = 3 , CDATA = 4};
 
 	public string tagName = "";
 	public TagType tagType = TagType.OPENING;
@@ -31,6 +31,23 @@ public class TinyXmlReader
 		while (i < xmlString.Length)
 		{
 			if (xmlString[i] == _c)
+				return i;
+
+			++i;
+		}
+
+		return -1;
+	}
+
+	int IndexOf(string _s, int _i)
+	{
+		if (string.IsNullOrEmpty(_s))
+			return -1;
+
+		int i = _i;
+		while (i < (xmlString.Length - _s.Length))
+		{
+			if (xmlString.Substring(i, _s.Length) == _s)
 				return i;
 
 			++i;
@@ -54,16 +71,11 @@ public class TinyXmlReader
 		if (endOfTag == -1)
 			return false;
 
-		// All contents of the tag, incl. name and attributes
-		string tagContents = xmlString.Substring(idx, endOfTag - idx);
-
 		int endOfName = IndexOf(' ', idx);
 		if ((endOfName == -1) || (endOfTag < endOfName))
 			endOfName = endOfTag;
 
 		tagName = xmlString.Substring(idx, endOfName - idx);
-
-		idx = endOfTag;
 
 		// Fill in the tag name
 		if (tagName.StartsWith("/"))
@@ -81,12 +93,25 @@ public class TinyXmlReader
 			tagType = TagType.COMMENT;
 			tagName = string.Empty;	// A comment doesn't have a tag name
 		}
+		else if (tagName.StartsWith("![CDATA["))
+		{
+			tagType = TagType.CDATA;
+			tagName = string.Empty;	// A CDATA element doesn't have a name
+
+			// When dealing with CDATA-elements, the tag ends with "]]>", ensure we have the correct end of the tag
+			endOfTag = IndexOf("]]>", idx);
+			endOfName = endOfTag;
+		}
 		else
 		{
 			tagType = TagType.OPENING;
 		}
 
+		// All contents of the tag, incl. name and attributes
+		string tagContents = xmlString.Substring(idx, endOfTag - idx);
+
 		// Set the contents of the tag with respect to the type of the tag
+		idx = endOfTag;
 		switch (tagType)
 		{
 			case TagType.OPENING:
@@ -107,6 +132,13 @@ public class TinyXmlReader
 					return false;
 
 				content = tagContents.Substring(tagName.Length + 1, tagContents.Length - tagName.Length - 2).Trim();
+				break;
+			case TagType.CDATA:
+				if ((tagContents.Length - 8) < 0)
+					return false;
+
+				// The content for a CDATA element is not trimmed because it can damage the data it contains
+				content = tagContents.Substring(8, tagContents.Length - 8); 
 				break;
 			default:
 				content = string.Empty;
