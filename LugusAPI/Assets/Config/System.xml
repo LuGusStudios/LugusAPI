@@ -3,7 +3,7 @@
 	<musicvolume>75</musicvolume>
 	<controllervibration>0</controllervibration>
 	<Language>EN</Language>
-  <![CDATA[Dit is een testje voor CDATA @&$^$@(<><Language>EN</Language> < /><":":{[}:}]: 986768_-+=~## ]]>
+	<Test><![CDATA[<Tag>Lijkt te werken!#$%]])[></Tag>]]></Test>
 	<User.Latest>System</User.Latest>
 	<graphicsquality>High</graphicsquality>
 </Config>

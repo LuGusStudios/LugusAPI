@@ -17,7 +17,7 @@ public class TinyXmlReader
 		xmlString = newXmlString;
 	}
 
-	public enum TagType { OPENING = 0, CLOSING = 1, COMMENT = 2, HEADER = 3 , CDATA = 4};
+	public enum TagType { OPENING = 0, CLOSING = 1, COMMENT = 2, HEADER = 3};
 
 	public string tagName = "";
 	public TagType tagType = TagType.OPENING;
@@ -56,6 +56,11 @@ public class TinyXmlReader
 		return -1;
 	}
 
+	string ExtractCDATA(int _i)
+	{
+		return string.Empty;
+	}
+
 	public bool Read()
 	{
 		if (idx > -1)
@@ -71,11 +76,15 @@ public class TinyXmlReader
 		if (endOfTag == -1)
 			return false;
 
+		// All contents of the tag, incl. name and attributes
+		string tagContents = xmlString.Substring(idx, endOfTag - idx);
+
 		int endOfName = IndexOf(' ', idx);
 		if ((endOfName == -1) || (endOfTag < endOfName))
 			endOfName = endOfTag;
 
 		tagName = xmlString.Substring(idx, endOfName - idx);
+		idx = endOfTag;
 
 		// Fill in the tag name
 		if (tagName.StartsWith("/"))
@@ -93,52 +102,56 @@ public class TinyXmlReader
 			tagType = TagType.COMMENT;
 			tagName = string.Empty;	// A comment doesn't have a tag name
 		}
-		else if (tagName.StartsWith("![CDATA["))
-		{
-			tagType = TagType.CDATA;
-			tagName = string.Empty;	// A CDATA element doesn't have a name
-
-			// When dealing with CDATA-elements, the tag ends with "]]>", ensure we have the correct end of the tag
-			endOfTag = IndexOf("]]>", idx);
-			endOfName = endOfTag;
-		}
 		else
 		{
 			tagType = TagType.OPENING;
 		}
 
-		// All contents of the tag, incl. name and attributes
-		string tagContents = xmlString.Substring(idx, endOfTag - idx);
-
 		// Set the contents of the tag with respect to the type of the tag
-		idx = endOfTag;
 		switch (tagType)
 		{
 			case TagType.OPENING:
-				int startOfCloseTag = xmlString.IndexOf("<", idx);
+				content = xmlString.Substring(idx + 1);
+
+				int startOfCloseTag = IndexOf("<", idx);
 				if (startOfCloseTag == -1)
 					return false;
+				
+				// Check that the startOfCloseTag is not actually the start of a tag containing CDATA
+				if (xmlString.Substring(startOfCloseTag, 9) == "<![CDATA[")
+				{
+					int startOfCDATA = startOfCloseTag;
+					int endOfCDATA = IndexOf("]]>", startOfCDATA + 9);
+					startOfCloseTag = IndexOf("<", endOfCDATA + 3);
 
-				content = xmlString.Substring(idx + 1, startOfCloseTag - idx - 1).Trim();
+					if (endOfCDATA == -1)
+						return false;
+
+					string CDATAContent = xmlString.Substring(startOfCDATA + 9, endOfCDATA - (startOfCDATA + 9));
+					string preContent = xmlString.Substring(idx + 1, startOfCDATA - (idx + 1));
+					string postContent = xmlString.Substring(endOfCDATA + 3, startOfCloseTag - (endOfCDATA + 3));
+
+					content = preContent + CDATAContent + postContent;
+					
+					idx = startOfCloseTag;
+				}
+				else
+				{
+					content = xmlString.Substring(idx + 1, startOfCloseTag - idx - 1);
+				}
+
 				break;
 			case TagType.COMMENT:
 				if ((tagContents.Length - 5) < 0)
 					return false;
 
-				content = tagContents.Substring(3, tagContents.Length - 5).Trim();
+				content = tagContents.Substring(3, tagContents.Length - 5);
 				break;
 			case TagType.HEADER:
 				if ((tagContents.Length - 1) < 0)
 					return false;
 
-				content = tagContents.Substring(tagName.Length + 1, tagContents.Length - tagName.Length - 2).Trim();
-				break;
-			case TagType.CDATA:
-				if ((tagContents.Length - 8) < 0)
-					return false;
-
-				// The content for a CDATA element is not trimmed because it can damage the data it contains
-				content = tagContents.Substring(8, tagContents.Length - 8); 
+				content = tagContents.Substring(tagName.Length + 1, tagContents.Length - tagName.Length - 2);
 				break;
 			default:
 				content = string.Empty;

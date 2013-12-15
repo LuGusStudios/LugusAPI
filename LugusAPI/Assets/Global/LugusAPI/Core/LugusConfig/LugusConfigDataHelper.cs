@@ -75,6 +75,12 @@ public class LugusConfigDataHelperXML : ILugusConfigDataHelper
 		for (int i = 0; i < data.Count; ++i)
 		{
 			string key = keys[i], value = values[i];
+
+			if (value.Contains('<') || value.Contains('>') || value.Contains('&'))
+				value = "<![CDATA[" + value + "]]>";
+
+			
+
 			rawdata += "\t<" + key + ">" + value + "</" + key + ">\r\n";
 		}
 
