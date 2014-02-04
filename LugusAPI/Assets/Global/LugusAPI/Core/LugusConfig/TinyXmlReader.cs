@@ -19,7 +19,7 @@ public class TinyXmlReader
 		xmlString = newXmlString;
 	}
 
-	public enum TagType { OPENING = 0, CLOSING = 1, COMMENT = 2, HEADER = 3 };
+	public enum TagType { OPENING = 0, CLOSING = 1, COMMENT = 2, HEADER = 3};
 
 	public string tagName = "";
 	public TagType tagType = TagType.OPENING;
@@ -39,6 +39,28 @@ public class TinyXmlReader
 		}
 
 		return -1;
+	}
+
+	int IndexOf(string _s, int _i)
+	{
+		if (string.IsNullOrEmpty(_s))
+			return -1;
+
+		int i = _i;
+		while (i < (xmlString.Length - _s.Length))
+		{
+			if (xmlString.Substring(i, _s.Length) == _s)
+				return i;
+
+			++i;
+		}
+
+		return -1;
+	}
+
+	string ExtractCDATA(int _i)
+	{
+		return string.Empty;
 	}
 
 	public bool Read()
@@ -64,7 +86,6 @@ public class TinyXmlReader
 			endOfName = endOfTag;
 
 		tagName = xmlString.Substring(idx, endOfName - idx);
-
 		idx = endOfTag;
 
 		// Fill in the tag name
@@ -92,23 +113,47 @@ public class TinyXmlReader
 		switch (tagType)
 		{
 			case TagType.OPENING:
-				int startOfCloseTag = xmlString.IndexOf("<", idx);
+				content = xmlString.Substring(idx + 1);
+
+				int startOfCloseTag = IndexOf("<", idx);
 				if (startOfCloseTag == -1)
 					return false;
+				
+				// Check that the startOfCloseTag is not actually the start of a tag containing CDATA
+				if (xmlString.Substring(startOfCloseTag, 9) == "<![CDATA[")
+				{
+					int startOfCDATA = startOfCloseTag;
+					int endOfCDATA = IndexOf("]]>", startOfCDATA + 9);
+					startOfCloseTag = IndexOf("<", endOfCDATA + 3);
 
-				content = xmlString.Substring(idx + 1, startOfCloseTag - idx - 1).Trim();
+					if (endOfCDATA == -1)
+						return false;
+
+					string CDATAContent = xmlString.Substring(startOfCDATA + 9, endOfCDATA - (startOfCDATA + 9));
+					string preContent = xmlString.Substring(idx + 1, startOfCDATA - (idx + 1));
+					string postContent = xmlString.Substring(endOfCDATA + 3, startOfCloseTag - (endOfCDATA + 3));
+
+					content = preContent + CDATAContent + postContent;
+					
+					idx = startOfCloseTag;
+				}
+				else
+				{
+					content = xmlString.Substring(idx + 1, startOfCloseTag - idx - 1);
+				}
+
 				break;
 			case TagType.COMMENT:
 				if ((tagContents.Length - 5) < 0)
 					return false;
 
-				content = tagContents.Substring(3, tagContents.Length - 5).Trim();
+				content = tagContents.Substring(3, tagContents.Length - 5);
 				break;
 			case TagType.HEADER:
 				if ((tagContents.Length - 1) < 0)
 					return false;
 
-				content = tagContents.Substring(tagName.Length + 1, tagContents.Length - tagName.Length - 2).Trim();
+				content = tagContents.Substring(tagName.Length + 1, tagContents.Length - tagName.Length - 2);
 				break;
 			default:
 				content = string.Empty;
