@@ -99,8 +99,11 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		_data = new Dictionary<string, string>();
 		_providers = new List<ILugusConfigProvider>();
 		_changed = true;
-
+#if !UNITY_WEBPLAYER
 		Providers.Add(new LugusConfigProviderDefault(Application.dataPath + "/Config/"));
+#else
+		Providers.Add(new LugusConfigProviderPlayerPrefs(name));
+#endif
 	}
 
 	// Add a default provider pointing at a folder specified in path.
@@ -111,7 +114,11 @@ public class LugusConfigProfileDefault : ILugusConfigProfile
 		_providers = new List<ILugusConfigProvider>();
 		_changed = false;
 		
+#if !UNITY_WEBPLAYER
 		Providers.Add(new LugusConfigProviderDefault(path));
+#else
+		Providers.Add(new LugusConfigProviderPlayerPrefs(name));
+#endif
 	}
 
 	// Add a predefined provider for this profile instead of a default one.

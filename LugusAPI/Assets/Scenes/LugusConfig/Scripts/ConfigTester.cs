@@ -51,6 +51,15 @@ public class ConfigTester : MonoBehaviour
 			else
 				Debug.Log("Not all tests passed.");
 		}
+
+		yPos += 50;
+
+#if !UNITY_WEBPLAYER
+		GUI.Label( new Rect(xPos, yPos, BoxWidth, 20), "Not webplayer. Using System.IO" );
+		#else
+		GUI.Label( new Rect(xPos, yPos, BoxWidth, 20), "Webplayer. Using PlayerPrefs" );
+
+#endif
 	}
 
 	// Draws the layout of all available profiles in LugusConfig
@@ -98,11 +107,11 @@ public class ConfigTester : MonoBehaviour
 	{
 		// Save and load-box
 		yPos += 40;
-		GUI.Box(new Rect(xPos, yPos, BoxWidth, 120), "Load and Store");
+		GUI.Box(new Rect(xPos, yPos, BoxWidth, 100), "Load and Store");
 
-		// Reload all profiles found in the Config-dir with the default providers
+		// Reloads all the profiles found in the Config-folder when pressing the button
 		yPos += 20;
-		if (GUI.Button(new Rect(xPos, yPos, BoxWidth, 20), "Reload profiles default"))
+		if (GUI.Button(new Rect(xPos, yPos, BoxWidth, 20), "Reload profiles"))
 			_config.ReloadDefaultProfiles();
 
 		// Reload all profiles from XML format
@@ -115,15 +124,10 @@ public class ConfigTester : MonoBehaviour
 		if (GUI.Button(new Rect(xPos, yPos, BoxWidth, 20), "Reload profiles from JSON"))
 			ReloadProfilesJSON();
 
-		// Store the profiles as XML
+		// Saves all the profiles to the Config-folder when pressing the button
 		yPos += 20;
-		if (GUI.Button(new Rect(xPos, yPos, BoxWidth, 20), "Store profiles as XML"))
-			StoreProfilesXML();
-
-		// Store the profiles as JSON
-		yPos += 20;
-		if (GUI.Button(new Rect(xPos, yPos, BoxWidth, 20), "Store profiles as JSON"))
-			StoreProfilesJSON();
+		if (GUI.Button(new Rect(xPos, yPos, BoxWidth, 20), "Store profiles"))
+			_config.SaveProfiles();
 	}
 
 	// Draws the layout of the system profile
@@ -273,7 +277,8 @@ public class ConfigTester : MonoBehaviour
 
 	private void ReloadProfilesXML()
 	{
-		// Create new XML providers for the profiles
+#if !UNITY_WEBPLAYER
+		// Temporarily replace the list of providers with XML providers
 		LugusConfigProviderDefault xmlProvider = new LugusConfigProviderDefault(Application.dataPath + "/Config/", new LugusConfigDataHelperXML());
 		List<ILugusConfigProvider> xmlProviders = new List<ILugusConfigProvider>();
 		xmlProviders.Add(xmlProvider);
@@ -285,16 +290,21 @@ public class ConfigTester : MonoBehaviour
 			if (profile == null)
 				break;
 
-			profile.Data.Clear();
+			List<ILugusConfigProvider> originalProviders = profile.Providers;
 			profile.Providers = xmlProviders;
+
 			profile.Load();
+
+			profile.Providers = originalProviders;
 		}
+#endif
 	}
 
 	private void ReloadProfilesJSON()
 	{
-		// Create new JSON providers for the profiles
-		LugusConfigProviderDefault jsonProvider = new LugusConfigProviderDefault(Application.dataPath + "/Config/", new LugusConfigDataHelperJSON());
+#if !UNITY_WEBPLAYER
+		// Temporarily replace the list of providers with JSON providers
+		LugusConfigProviderDefault jsonProvider = new LugusConfigProviderDefault(Application.dataPath + "/Config/", new LugusConfigDataHelperXML());
 		List<ILugusConfigProvider> jsonProviders = new List<ILugusConfigProvider>();
 		jsonProviders.Add(jsonProvider);
 
@@ -305,49 +315,13 @@ public class ConfigTester : MonoBehaviour
 			if (profile == null)
 				break;
 
-			profile.Data.Clear();
+			List<ILugusConfigProvider> originalProviders = profile.Providers;
 			profile.Providers = jsonProviders;
+
 			profile.Load();
+
+			profile.Providers = originalProviders;
 		}
-	}
-
-	private void StoreProfilesXML()
-	{
-		// Create new XML providers for the profiles
-		LugusConfigProviderDefault xmlProvider = new LugusConfigProviderDefault(Application.dataPath + "/Config/", new LugusConfigDataHelperXML());
-		List<ILugusConfigProvider> xmlProviders = new List<ILugusConfigProvider>();
-		xmlProviders.Add(xmlProvider);
-
-		foreach (ILugusConfigProfile iprofile in _config.AllProfiles)
-		{
-			LugusConfigProfileDefault profile = iprofile as LugusConfigProfileDefault;
-
-			if (profile == null)
-				break;
-
-			profile.Providers = xmlProviders;
-		}
-
-		_config.SaveProfiles();
-	}
-
-	private void StoreProfilesJSON()
-	{
-		// Create new JSON providers for the profiles
-		LugusConfigProviderDefault jsonProvider = new LugusConfigProviderDefault(Application.dataPath + "/Config/", new LugusConfigDataHelperJSON());
-		List<ILugusConfigProvider> jsonProviders = new List<ILugusConfigProvider>();
-		jsonProviders.Add(jsonProvider);
-
-		foreach (ILugusConfigProfile iprofile in _config.AllProfiles)
-		{
-			LugusConfigProfileDefault profile = iprofile as LugusConfigProfileDefault;
-
-			if (profile == null)
-				break;
-
-			profile.Providers = jsonProviders;
-		}
-
-		_config.SaveProfiles();
+#endif
 	}
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 
@@ -6,6 +7,7 @@ using System.Collections;
 	See site for usage.
 	Extended to handle comments and headers.
 */
+using System.Linq;
 
 public class TinyXmlReader
 {
@@ -171,4 +173,62 @@ public class TinyXmlReader
 		}
 		return retVal;
 	}
+
+	
+	public static Dictionary<string, string> DictionaryFromXMLString(string xmlString)
+	{
+		Dictionary<string, string> data = new Dictionary<string, string>();
+
+		TinyXmlReader xmlreader = new TinyXmlReader(xmlString);
+		
+		int depth = -1;
+		
+		// While still reading valid data
+		while (xmlreader.Read())
+		{
+			
+			if (xmlreader.tagType == TinyXmlReader.TagType.OPENING)
+				++depth;
+			else if (xmlreader.tagType == TinyXmlReader.TagType.CLOSING)
+				--depth;
+			
+			// Useful data is found at depth level 1
+			if ((depth == 1) && (xmlreader.tagType == TinyXmlReader.TagType.OPENING))
+				data.Add(xmlreader.tagName, xmlreader.content);
+		}
+
+		return data;
+	}
+
+	
+	public static string DictionaryToXMLString(Dictionary<string, string> data, string root = "Root")
+	{
+		if (data == null)
+			return string.Empty;
+		
+		List<string> keys = data.Keys.ToList();
+		List<string> values = data.Values.ToList();
+		
+		string rawdata = string.Empty;
+		rawdata += "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n";
+		rawdata += "<"+root +">\r\n";
+		
+		for (int i = 0; i < data.Count; ++i)
+		{
+			string key = keys[i];
+			string value = values[i];
+
+			if (value.Contains('<') || value.Contains('>') || value.Contains('&'))
+				value = "<![CDATA[" + value + "]]>"; 
+
+
+			rawdata += "\t<" + key + ">" + value + "</" + key + ">\r\n";
+		}
+		
+		rawdata += "</"+ root +">\r\n";
+		return rawdata;
+	}
+
+
+
 }
