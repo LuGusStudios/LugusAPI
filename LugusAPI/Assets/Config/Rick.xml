@@ -3,7 +3,10 @@
 	<character>R!ckyBoi</character>
 	<health>100</health>
 	<mana>76</mana>
-	<strength>56</strength>
+	<strength>82.74319</strength>
 	<defense>78</defense>
 	<crippled>False</crippled>
-<Config>
+	<Robin>1234</Robin>
+	<Marx>Robin</Marx>
+	<C-MINE>100</C-MINE>
+</Config>

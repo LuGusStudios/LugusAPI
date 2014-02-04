@@ -1,2 +1,5 @@
-test.text@@@Nederlandse tekst
-test.text2@@@Lekkere frietjes!
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+<test.text>Nederlandse tekst</test.text>
+<test.text2>Lekkere frietjes!</test.text2>
+</root> 
