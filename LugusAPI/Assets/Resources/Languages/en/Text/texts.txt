@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <root>
 <test.text>English text</test.text>
-<test.text2>Nice cup of tea</test.text2>
+<test.text2><![CDATA[<CDATATag>Lijkt te werken!#$%]])[></Tag>]]></test.text2>
 </root> 
