@@ -4,5 +4,6 @@
 	<controllervibration>0</controllervibration>
 	<Language>EN</Language>
 	<User.Latest>Rick</User.Latest>
-	<graphicsquality>High</graphicsquality>
-<Config>
+	<graphicsquality>Low</graphicsquality>
+	<Robin>1234</Robin>
+</Config>

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+#if !UNITY_WEBPLAYER
 using System.IO;
+#endif
 using System.Collections;
 using System.Collections.Generic;
 
@@ -53,6 +55,7 @@ public class LugusConfigDefault : MonoBehaviour
 	protected List<ILugusConfigProfile> _profiles = new List<ILugusConfigProfile>();	// All profiles registered in this configuration, incl. system profile.
 	#endregion
 
+	#if !UNITY_WEBPLAYER
 	// Reload all profiles found in the Config folder.
 	public void ReloadDefaultProfiles()
 	{
@@ -104,6 +107,37 @@ public class LugusConfigDefault : MonoBehaviour
 			_profiles.Add(_currentUser);
 		}
 	}
+#else
+
+	// Reload all profiles found in the Config folder.
+	public void ReloadDefaultProfiles()
+	{
+		_profiles = new List<ILugusConfigProfile>();
+		_systemProfile = null;
+		_currentUser = null;
+
+		// TODO: in the case of playerprefs, we have to save a separate playerprefs key indicating which profiles are available
+		// for now, we just take System
+
+		_systemProfile = new LugusConfigProfileDefault("System", new LugusConfigProviderPlayerPrefs("System") );
+		_systemProfile.Load();
+		_profiles.Add( _systemProfile );
+
+		string lastestUser = _systemProfile.GetString("User.Latest", string.Empty);
+		if (!string.IsNullOrEmpty(lastestUser))
+		{
+			_currentUser = new LugusConfigProfileDefault(lastestUser, new LugusConfigProviderPlayerPrefs(lastestUser) );
+		}
+		else
+		{
+			_currentUser = new LugusConfigProfileDefault("Player", new LugusConfigProviderPlayerPrefs("Player") );
+		}
+
+		_currentUser.Load();
+
+		_profiles.Add(_currentUser);
+	}
+#endif
 
 	public void SaveProfiles()
 	{

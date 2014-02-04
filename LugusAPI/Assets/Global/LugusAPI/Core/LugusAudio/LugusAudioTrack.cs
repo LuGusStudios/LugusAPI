@@ -13,7 +13,7 @@ public interface ILugusAudioTrack
 	
 	
 	// Load the clip and apply the settings, but don't start playing the clip just yet
-	void Load(AudioClip clip, LugusAudioTrackSettings settings = null);
+	bool Load(AudioClip clip, LugusAudioTrackSettings settings = null);
 	// Play a Load()ed clip or re-start the current clip
 	void Play();
 	// Directly Load() and afterwards Play() a clip
@@ -109,22 +109,29 @@ public class LugusAudioTrack : MonoBehaviour, ILugusAudioTrack
 	}
 	
 	#region load and play
-	public void Load(AudioClip clip, LugusAudioTrackSettings settings = null)
+	public bool Load(AudioClip clip, LugusAudioTrackSettings settings = null)
 	{
 		if( clip == null )
 		{
 			Debug.LogError(name + " : clip was null! ignoring...");
-			return;
+			return false;
 		}
 		
 		if( Channel == null )
 		{
 			Debug.LogError(name + " : Channel was null! ignoring...");
-			return;
+			return false;
 		}
 		
 		Source.clip = clip;
 		Source.time = 0.0f;
+		
+		// reset the settings 
+		// otherwhise, if the previous PLay had for example Loop set
+		// but the baseSettings didn't have loop set... loop would remain set on the next Play
+		// TODO: make this more decent...
+		this.Loop = false;
+		this.Volume = 1.0f;
 		
 		if( settings != null )
 		{
@@ -139,18 +146,21 @@ public class LugusAudioTrack : MonoBehaviour, ILugusAudioTrack
 		if( settings != null )
 		{
 			settings.ApplyTo( this );
-		
+			
 			if( settings.Position() == LugusUtil.DEFAULTVECTOR )
 			{
 				transform.localPosition = Vector3.zero;//position = LugusCamera.game.transform.position;//LugusAudio.use.transform.position;
 			}
 		}
+		
+		return true;
 	}
 	
 	public void Play(AudioClip clip, LugusAudioTrackSettings settings = null)
 	{
-		Load (clip, settings);
-		Play ();
+		bool loaded = Load (clip, settings);
+		if( loaded )
+			Play ();
 	}
 	
 	// To be used after Load() or to re-start the clip

@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
+
+#if !UNITY_WEBPLAYER
 using System.IO;
+#endif
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +17,7 @@ public interface ILugusConfigProvider
 	void Store(Dictionary<string, string> data, string key);
 }
 
+#if !UNITY_WEBPLAYER
 public class LugusConfigProviderDefault : ILugusConfigProvider
 {
 
@@ -126,4 +130,105 @@ public class LugusConfigProviderDefault : ILugusConfigProvider
 		}
 	}
 
+}
+#endif
+
+public class LugusConfigProviderPlayerPrefs : ILugusConfigProvider
+{
+	
+	#region Properties
+	public virtual string URL
+	{
+		get
+		{
+			return _url;
+		}
+		set
+		{
+			_url = value;
+		}
+	}
+	public List<ILugusConfigDataHelper> Parsers
+	{
+		get
+		{
+			return _parsers;
+		}
+		set
+		{
+			_parsers = value;
+		}
+	}
+	
+	[SerializeField]
+	protected string _url = "";
+	
+	protected List<ILugusConfigDataHelper> _parsers = null;
+	#endregion
+	
+	// Adds an XML parser as standard parser.
+	public LugusConfigProviderPlayerPrefs(string url) 
+	{
+		_url = url;
+		
+		_parsers = new List<ILugusConfigDataHelper>();
+		_parsers.Add(new LugusConfigDataHelperXML());
+		//_parsers.Add(new LugusConfigDataHelperJSON());
+		
+	}
+	
+	// Use the given parser to parse data loaded by the provider.
+	public LugusConfigProviderPlayerPrefs(string url, ILugusConfigDataHelper parser)
+	{
+		_url = url;
+		_parsers = new List<ILugusConfigDataHelper>();
+		_parsers.Add(new LugusConfigDataHelperXML());
+
+		// for now we only accept XML serialiation
+		//_parsers.Add(parser);
+		
+	}
+	
+	// Use the given list of parsers to parse data loaded by the provider.
+	public LugusConfigProviderPlayerPrefs(string url, List<ILugusConfigDataHelper> parsers)
+	{
+		_url = url;
+		_parsers = new List<ILugusConfigDataHelper>();
+		_parsers.Add(new LugusConfigDataHelperXML());
+
+		//_parsers = parsers;
+	}
+	
+	public Dictionary<string, string> Load(string key)
+	{
+		// Find config files that can be parsed by the parsers in the list.
+		// Data parsed by multiple parsers will be merged.
+		// Data with the same key from different parsers will result in the value of the parser that parsed the key last.
+		// So the order in which the parsers are added is important!
+		
+		Dictionary<string, string> data = new Dictionary<string, string>();
+
+		Debug.LogWarning("PlayerPrefs load " + key + " at " + PlayerPrefs.GetString(URL) );
+
+		if( PlayerPrefs.HasKey(URL) )
+		{
+			//foreach (ILugusConfigDataHelper parser in _parsers)
+			//{
+				Dictionary<string, string> partialData = _parsers[0].ParseFrom( PlayerPrefs.GetString(URL) );
+				
+				// Merge with data and resolve duplicate keys
+				foreach (KeyValuePair<string, string> entry in partialData)
+					data.Add(entry.Key, entry.Value);
+			//}
+		}
+
+		return data;
+	}
+	
+	public void Store(Dictionary<string, string> data, string key)
+	{
+		Debug.LogWarning("PlayerPrefs : storing " + key + " as " + _parsers[0].ParseTo(data) );
+		PlayerPrefs.SetString(URL, _parsers[0].ParseTo(data) );
+	}
+	
 }

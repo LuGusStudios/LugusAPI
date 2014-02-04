@@ -143,6 +143,17 @@ public static class ColorExtensions
 	{
 		return new Color(c.r, c.g, c.b, val);
 	}
+
+	public static Color Lerp(this Color c, Color target, float percentage )
+	{
+		Color output = new Color();
+		output.r = Mathf.Lerp(c.r, target.r, percentage);
+		output.g = Mathf.Lerp(c.g, target.g, percentage);
+		output.b = Mathf.Lerp(c.b, target.b, percentage);
+		output.a = Mathf.Lerp(c.a, target.a, percentage); 
+		
+		return output;
+	}
 }
 
 public static class TransformExtensions

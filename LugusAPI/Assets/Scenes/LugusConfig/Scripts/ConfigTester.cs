@@ -51,6 +51,15 @@ public class ConfigTester : MonoBehaviour
 			else
 				Debug.Log("Not all tests passed.");
 		}
+
+		yPos += 50;
+
+#if !UNITY_WEBPLAYER
+		GUI.Label( new Rect(xPos, yPos, BoxWidth, 20), "Not webplayer. Using System.IO" );
+		#else
+		GUI.Label( new Rect(xPos, yPos, BoxWidth, 20), "Webplayer. Using PlayerPrefs" );
+
+#endif
 	}
 
 	// Draws the layout of all available profiles in LugusConfig
@@ -268,7 +277,7 @@ public class ConfigTester : MonoBehaviour
 
 	private void ReloadProfilesXML()
 	{
-
+#if !UNITY_WEBPLAYER
 		// Temporarily replace the list of providers with XML providers
 		LugusConfigProviderDefault xmlProvider = new LugusConfigProviderDefault(Application.dataPath + "/Config/", new LugusConfigDataHelperXML());
 		List<ILugusConfigProvider> xmlProviders = new List<ILugusConfigProvider>();
@@ -288,10 +297,12 @@ public class ConfigTester : MonoBehaviour
 
 			profile.Providers = originalProviders;
 		}
+#endif
 	}
 
 	private void ReloadProfilesJSON()
 	{
+#if !UNITY_WEBPLAYER
 		// Temporarily replace the list of providers with JSON providers
 		LugusConfigProviderDefault jsonProvider = new LugusConfigProviderDefault(Application.dataPath + "/Config/", new LugusConfigDataHelperXML());
 		List<ILugusConfigProvider> jsonProviders = new List<ILugusConfigProvider>();
@@ -311,5 +322,6 @@ public class ConfigTester : MonoBehaviour
 
 			profile.Providers = originalProviders;
 		}
+#endif
 	}
 }
