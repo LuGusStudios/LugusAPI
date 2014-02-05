@@ -9,7 +9,32 @@ public class LugusResourceHelperText
 	
 	public string delimiterLines = "\n";
 	public string delimiterFields = "@@@";
-	
+
+	public string Get(string key, string backupKey)
+	{
+		if( texts.Count == 0 )
+		{
+			Debug.LogError("No texts loaded! " + key);
+			return "[" + key + " // " + backupKey +"]";
+		}
+		
+		if( texts.ContainsKey(key) )
+		{
+			return texts[key];
+		}
+		else
+		{
+			if( texts.ContainsKey(backupKey) )
+			{
+				return texts[backupKey];
+			}
+			else
+			{
+				Debug.LogError("No entry found for key " + key + " or backup " + backupKey);
+				return "[" + key + " // " + backupKey + "]";
+			}
+		}
+	}
 	
 	public string Get(string key)
 	{

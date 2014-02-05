@@ -50,4 +50,10 @@ public class LugusResourceProviderDisk : ILugusResourceProvider
 		LugusResources.LogResourceLoad( BaseURL + "Text/" + key );
 		return Resources.Load( BaseURL + "Text/" + key, typeof(TextAsset) ) as TextAsset;
 	}
+	
+	public Sprite GetSprite(string BaseURL, string key)
+	{
+		LugusResources.LogResourceLoad( BaseURL + "Sprites/" + key );
+		return Resources.Load( BaseURL + "Sprites/" + key, typeof(Sprite) ) as Sprite;
+	}
 }
