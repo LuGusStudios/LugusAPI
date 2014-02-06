@@ -6,6 +6,7 @@ public class ResourcesTester : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
+		UpdateTextAsset();
 	}
 	
 	// Update is called once per frame
@@ -25,11 +26,18 @@ public class ResourcesTester : MonoBehaviour {
 			{
 				LugusResources.use.Localized.LangID = "en";
 			}
+
+			UpdateTextAsset();
 		}
 		else if( t == GameObject.Find ("AudioButton").transform )
 		{
 			LugusAudioSource src = GameObject.Find ("AudioButton").GetComponent<LugusAudioSource>();
 			src.Play();
 		}
+	}
+
+	protected void UpdateTextAsset()
+	{
+		GameObject.Find ("TextAsset").GetComponent<TextMesh>().text = LugusResources.use.Localized.GetTextAsset("test").text;
 	}
 }

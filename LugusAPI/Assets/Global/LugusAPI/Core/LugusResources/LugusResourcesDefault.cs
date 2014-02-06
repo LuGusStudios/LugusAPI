@@ -52,6 +52,8 @@ public class LugusResourcesDefault : MonoBehaviour
 	
 	public Texture2D errorTexture = null;
 	public AudioClip errorAudio = null;
+	public Sprite errorSprite = null;
+	public TextAsset errorTextAsset = null;
 	
 	protected void LoadDefaultCollections()
 	{ 
@@ -71,8 +73,14 @@ public class LugusResourcesDefault : MonoBehaviour
 		if( errorTexture == null )
 			errorTexture = Shared.GetTexture("error");
 		
+		if( errorSprite == null )
+			errorSprite = Shared.GetSprite("error");
+		
 		if( errorAudio == null )
 			errorAudio = Shared.GetAudio("error");
+		
+		if( errorTextAsset == null )
+			errorTextAsset = Shared.GetTextAsset("error");
 	}
 	
 	protected void CollectionReloaded()
@@ -105,6 +113,24 @@ public class LugusResourcesDefault : MonoBehaviour
 		return output;
 	}
 	
+	public Sprite GetSprite(string key)
+	{	
+		Sprite output = null;
+		
+		foreach( ILugusResourceCollection collection in collections )
+		{
+			output = collection.GetSprite(key);
+			if( output != errorSprite )
+				break;
+		}
+		
+		if( output == errorSprite )
+		{
+			Debug.LogError(name + " : Texture " + key + " was not found!");
+		}
+		
+		return output;
+	}
 	
 	public AudioClip GetAudio(string key)
 	{
