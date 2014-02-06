@@ -10,6 +10,16 @@ public class LugusResourceHelperText
 	public string delimiterLines = "\n";
 	public string delimiterFields = "@@@";
 
+	public bool HasText(string key)
+	{
+		if( texts.Count == 0 )
+			return false;
+		else
+		{
+			return texts.ContainsKey(key);
+		}
+	}
+
 	public string Get(string key, string backupKey)
 	{
 		if( texts.Count == 0 )

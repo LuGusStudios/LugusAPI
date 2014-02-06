@@ -10,12 +10,14 @@ public interface ILugusResourceCollection
 	Texture2D GetTexture(string key);
 	Sprite GetSprite(string key);
 	AudioClip GetAudio(string key);
+
+	bool HasText(string key);
 	string GetText(string key);
 	string GetText(string key, string backupKey);
 	
 	TextAsset GetTextAsset(string key);
 	
-	void Reload();
+	void Reload(); 
 }
 
 // just loads an asset from Resources folder using BaseURL, easy peasy
@@ -147,6 +149,11 @@ public class LugusResourceCollectionDefault : ILugusResourceCollection
 	public string GetText(string key, string backupKey)
 	{
 		return textHelper.Get ( key, backupKey );
+	}
+	
+	public bool HasText(string key)
+	{
+		return textHelper.HasText(key);
 	}
 
 	
