@@ -25,7 +25,7 @@ public interface ILugusResourceProvider
 	//TextAsset GetText(string key);
 	TextAsset GetText(string BaseURL, string key);
 	
-	//TextAsset GetText(string key);
+	//TextAsset GetSprite(string key);
 	Sprite GetSprite(string BaseURL, string key);
 }
 

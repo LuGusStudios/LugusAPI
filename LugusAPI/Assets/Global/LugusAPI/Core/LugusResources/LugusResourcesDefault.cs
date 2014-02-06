@@ -53,6 +53,7 @@ public class LugusResourcesDefault : MonoBehaviour
 	public Texture2D errorTexture = null;
 	public AudioClip errorAudio = null;
 	public Sprite errorSprite = null;
+	public TextAsset errorTextAsset = null;
 	
 	protected void LoadDefaultCollections()
 	{ 
@@ -77,6 +78,9 @@ public class LugusResourcesDefault : MonoBehaviour
 		
 		if( errorAudio == null )
 			errorAudio = Shared.GetAudio("error");
+		
+		if( errorTextAsset == null )
+			errorTextAsset = Shared.GetTextAsset("error");
 	}
 	
 	protected void CollectionReloaded()

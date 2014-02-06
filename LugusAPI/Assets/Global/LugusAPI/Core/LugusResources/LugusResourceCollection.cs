@@ -13,6 +13,8 @@ public interface ILugusResourceCollection
 	string GetText(string key);
 	string GetText(string key, string backupKey);
 	
+	TextAsset GetTextAsset(string key);
+	
 	void Reload();
 }
 
@@ -145,6 +147,27 @@ public class LugusResourceCollectionDefault : ILugusResourceCollection
 	public string GetText(string key, string backupKey)
 	{
 		return textHelper.Get ( key, backupKey );
+	}
+
+	
+	public TextAsset GetTextAsset(string key)
+	{
+		TextAsset output = null;
+		
+		foreach( ILugusResourceProvider provider in providers )
+		{
+			output = provider.GetText(_URL, key);
+			if( output != null )
+				break;
+		}
+		
+		if( output == null )
+		{
+			Debug.LogError(" : TextAsset " + _URL + " " + key + " was not found!");
+			output = LugusResources.use.errorTextAsset; 
+		}
+		
+		return output;
 	}
 }
 
