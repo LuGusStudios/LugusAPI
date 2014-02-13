@@ -80,5 +80,9 @@ public class DataRange
 	{
 		return ValueFromPercentage( UnityEngine.Random.value );
 	}
-	
+
+	public float Mean()
+	{
+		return (from + to) * 0.5f;
+	}
 }
