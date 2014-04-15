@@ -55,31 +55,41 @@ public class LugusCoroutinesDefault
 		}
 	}
 	
-	protected ILugusCoroutineHandle CreateHandle()
+	protected ILugusCoroutineHandle CreateHandle(GameObject runner = null)
 	{
 		FindReferences();
 		
-		GameObject handleGO = new GameObject("LugusCoroutineHandle");
+		GameObject handleGO = runner;
+
+		if( handleGO == null )
+		{
+			handleGO = new GameObject("LugusCoroutineHandle");
+			handleGO.transform.parent = handleHelperParent;
+		}
+
 		ILugusCoroutineHandle handle = handleGO.AddComponent<LugusCoroutineHandleDefault>();
-		
-		handleGO.transform.parent = handleHelperParent;
-		 
+
+		handles.Add( handle );
+
 		return handle;
 	}
 	
-	public ILugusCoroutineHandle GetHandle() 
+	public ILugusCoroutineHandle GetHandle(GameObject runner = null) 
 	{
 		// TODO: make sure the handles are recycled / that we use a Pool of handles that is initialized at the beginning
 		// loop over this.handles to find the next handle that has .Running == false
 		// if none can be found -> only then use CreateHandle()
+
+		// if runner != null, we probably have to make a new one though... or at most re-use the Component's on the runner object that are no longer running
 		
-		return CreateHandle(); 
+		return CreateHandle(runner); 
 	}
 	
-	public ILugusCoroutineHandle StartRoutine( IEnumerator routine )
+	public ILugusCoroutineHandle StartRoutine( IEnumerator routine, GameObject runner = null )
 	{
-		ILugusCoroutineHandle handle = GetHandle();
-		handle.StartRoutine( routine );
+		ILugusCoroutineHandle handle = GetHandle(runner);
+		Coroutine croutine = handle.StartRoutine( routine );
+		handle.Coroutine = croutine;
 		
 		return handle;
 	}
