@@ -31,9 +31,13 @@ public class iTweener : MonoBehaviour
 	public float _speed = float.MaxValue;
 	public float _delay = float.MaxValue;
 	public iTween.EaseType _easeType = iTween.EaseType.linear;
+	public iTween.LoopType _loopType = iTween.LoopType.none;
 	
 	public bool _local = false;
 	public bool _moveToPath = true;
+	
+	public bool _stopOthers = false;
+	public bool _ignoreTimeScale = false;
 	
 	
 	public iTweener Subject(GameObject go)
@@ -91,15 +95,33 @@ public class iTweener : MonoBehaviour
 		return this;
 	}
 	
+	public iTweener Looptype(iTween.LoopType loopType)
+	{
+		_loopType = loopType;
+		return this;
+	}
+	
 	public iTweener IsLocal(bool local)
 	{
 		_local = local;
 		return this;
 	}
 	
+	public iTweener IgnoreTimeScale(bool ignore)
+	{
+		_ignoreTimeScale = ignore;
+		return this;
+	}
+	
 	public iTweener MoveToPath(bool moveToPath)
 	{
 		_moveToPath = moveToPath;
+		return this;
+	}
+	
+	public iTweener StopOthers(bool stop)
+	{
+		_stopOthers = stop;
 		return this;
 	}
 	
@@ -169,7 +191,7 @@ public class iTweener : MonoBehaviour
 		//if( _target != NOTHING )
 		//{
 		
-			// NOTE: adding scale and rotation in a MoveTo has no effect (and vice versa for Scale and Rotate functions
+		// NOTE: adding scale and rotation in a MoveTo has no effect (and vice versa for Scale and Rotate functions
 		if( _targetPositions == null )
 			output.Add ("position", _targetPosition);
 		else
@@ -178,23 +200,35 @@ public class iTweener : MonoBehaviour
 			output.Add ("movetopath", _moveToPath);
 		}
 		
-			output.Add ("scale", _targetScale);
-			output.Add ("rotation", _targetRotation);
+		output.Add ("scale", _targetScale);
+		output.Add ("rotation", _targetRotation);
 		
 		if( _local )
 		{
 			output.Add ("islocal", _local);
 		}
 		
+		if( _ignoreTimeScale )
+		{
+			output.Add ("ignoretimescale", _ignoreTimeScale);
+		}
+		
 		//}
 		
 		output.Add ("easetype", _easeType);
+		
+		output.Add ("looptype", _loopType);
 		
 		return output;
 	}
 	
 	public void Execute()
 	{
+		if( _stopOthers )
+		{
+			this.gameObject.StopTweens();
+		}
+		
 		Hashtable arguments = BuildHashtable();
 		
 		if( type == TweenType.MoveTo )
@@ -272,6 +306,11 @@ public static class iTweenExtensions
 		output.TargetScale(targetScale);
 		
 		return output;
+	}
+	
+	public static void StopTweens(this GameObject go)
+	{
+		iTween.Stop(go);
 	}
 	
 	// always returns the first iTweener on the object

@@ -82,6 +82,17 @@ public class LugusResourcesDefault : MonoBehaviour
 		if( errorTextAsset == null )
 			errorTextAsset = Shared.GetTextAsset("error");
 	}
+
+	public void ChangeLanguage(string langKey)
+	{
+		foreach( ILugusResourceCollection collection in collections )
+		{
+			if( collection is LugusResourceCollectionLocalized )
+			{
+				( (LugusResourceCollectionLocalized) collection).LangID = langKey;
+			}
+		}
+	}
 	
 	protected void CollectionReloaded()
 	{

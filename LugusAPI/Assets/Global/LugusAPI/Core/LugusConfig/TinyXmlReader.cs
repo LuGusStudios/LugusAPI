@@ -194,7 +194,17 @@ public class TinyXmlReader
 			
 			// Useful data is found at depth level 1
 			if ((depth == 1) && (xmlreader.tagType == TinyXmlReader.TagType.OPENING))
-				data.Add(xmlreader.tagName, xmlreader.content);
+			{
+				if( !data.ContainsKey(xmlreader.tagName) )
+				{
+					data.Add(xmlreader.tagName, xmlreader.content);
+				}
+				else
+				{
+					Debug.LogWarning("Data already contained key " + xmlreader.tagName + " with value "+ data[ xmlreader.tagName ] +". Replacing value " + xmlreader.content);
+					data[ xmlreader.tagName ] = xmlreader.content;
+				}
+			}
 		}
 
 		return data;
