@@ -10,9 +10,11 @@ It provides features such as:
 - Advanced audio (channels, fading, individual track management)
 - Resource management (name-based resource acquisition, localization support (text + images + audio))
 - Singleton base classes (Existing, Runtime, Continuous)
+- Random classes (various distributions + combinations, random list shuffling, random colors, statefull randoms) (currently in LugusRandom branch)
 
-- iTween method chaining wrapper (iTweener)
+
 - Various extension methods (Vector3 in particular)
+- iTween method chaining extension (iTweener)
 - Utility classes ( DataRange, DataInterval (signal processing) )
 
 
